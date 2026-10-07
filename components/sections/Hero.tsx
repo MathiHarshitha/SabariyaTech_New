@@ -1,16 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
-import { Play } from "lucide-react";
+import { useRef, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+  type Variants,
+} from "framer-motion";
+import { Check, Play, Send, Sparkles } from "lucide-react";
 import { heroCapabilities, heroStats, site } from "@/data/site";
 import { accents } from "@/lib/accents";
 import { Button } from "@/components/ui/Button";
 import { CountUp } from "@/components/ui/CountUp";
 import { cn, EASE } from "@/lib/utils";
-
-const FLOW = "M120 820 C 260 700, 520 760, 520 640 C 520 540, 300 560, 320 470 C 340 380, 600 420, 680 330 C 740 260, 700 200, 760 150";
-const FLOW_2 = "M150 820 C 290 712, 548 770, 546 642 C 544 548, 330 566, 348 476 C 366 392, 620 430, 700 338 C 760 266, 722 206, 786 156";
 
 const rise = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -18,16 +24,241 @@ const rise = (delay: number) => ({
   transition: { duration: 0.9, ease: EASE, delay },
 });
 
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z]+/g, "-").replace(/-$/, "");
+
+/* ---------------------------------------------------------
+   Console scenes — decorative mockups, one per capability
+   --------------------------------------------------------- */
+const scene: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
+  exit: { opacity: 0, transition: { duration: 0.2 } },
+};
+const item: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
+};
+
+function Bar({ className }: { className?: string }) {
+  return <span className={cn("block h-1.5 rounded-full bg-white/15", className)} />;
+}
+
+function WebScene() {
+  return (
+    <motion.div variants={scene} initial="hidden" animate="show" exit="exit" className="flex h-full flex-col gap-3">
+      <motion.div variants={item} className="flex items-center justify-between rounded-xl bg-white/[0.06] px-3.5 py-2.5">
+        <span className="h-2 w-16 rounded-full bg-white/50" />
+        <span className="hidden gap-3 sm:flex">
+          {[0, 1, 2, 3].map((i) => (
+            <Bar key={i} className="w-9" />
+          ))}
+        </span>
+        <span className="h-6 w-16 rounded-lg bg-brand-orange" />
+      </motion.div>
+      <div className="grid flex-1 grid-cols-1 gap-3 sm:grid-cols-[1.25fr_1fr]">
+        <motion.div
+          variants={item}
+          className="flex flex-col justify-center gap-2.5 rounded-2xl bg-[linear-gradient(140deg,rgb(8_120_232/0.45),rgb(17_189_235/0.12))] p-5"
+        >
+          <span className="h-3.5 w-4/5 rounded-full bg-white/85" />
+          <span className="h-3.5 w-3/5 rounded-full bg-white/60" />
+          <Bar className="mt-2 w-full" />
+          <Bar className="w-5/6" />
+          <span className="mt-3 flex gap-2">
+            <span className="h-7 w-20 rounded-lg bg-white" />
+            <span className="h-7 w-16 rounded-lg border border-white/30" />
+          </span>
+        </motion.div>
+        <div className="hidden grid-rows-[1fr_auto] gap-3 sm:grid">
+          <motion.div variants={item} className="flex items-end gap-1.5 rounded-2xl bg-white/[0.06] p-4">
+            {[38, 56, 44, 70, 62, 84, 92].map((h, i) => (
+              <motion.span
+                key={i}
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{ duration: 0.7, ease: EASE, delay: 0.25 + i * 0.05 }}
+                style={{ height: `${h}%` }}
+                className="flex-1 origin-bottom rounded-md bg-gradient-to-t from-brand-blue to-brand-cyan"
+              />
+            ))}
+          </motion.div>
+          <motion.div variants={item} className="flex items-center gap-3 rounded-2xl bg-white/[0.06] p-3.5">
+            <span className="grid size-10 place-items-center rounded-full border-[3px] border-emerald-400 font-display text-[11px] font-bold text-white">
+              A+
+            </span>
+            <span className="text-[11.5px] leading-tight text-white/60">
+              <b className="block font-display text-[13px] text-white">Core Web Vitals</b>
+              Fast on every device
+            </span>
+          </motion.div>
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-3">
+        {[0, 1, 2].map((i) => (
+          <motion.div key={i} variants={item} className="space-y-2 rounded-xl bg-white/[0.05] p-3">
+            <span className="block size-5 rounded-md bg-white/20" />
+            <Bar className="w-4/5" />
+            <Bar className="w-3/5 bg-white/10" />
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
+function AiScene() {
+  const flow = ["New enquiry", "AI agent", "CRM", "Team alert"];
+  return (
+    <motion.div variants={scene} initial="hidden" animate="show" exit="exit" className="flex h-full flex-col gap-3 text-[12.5px]">
+      <motion.p variants={item} className="ml-auto max-w-[80%] rounded-2xl rounded-br-md bg-brand-orange px-3.5 py-2.5 leading-snug text-white">
+        Summarise this week&apos;s enquiries and assign follow-ups.
+      </motion.p>
+      <motion.div variants={item} className="flex max-w-[88%] gap-2.5">
+        <span className="grid size-8 shrink-0 place-items-center rounded-[10px] bg-gradient-to-br from-brand-amber to-brand-orange">
+          <Sparkles aria-hidden className="size-4 text-white" />
+        </span>
+        <div className="space-y-2 rounded-2xl rounded-tl-md bg-white/[0.07] px-3.5 py-3 leading-snug text-white/80">
+          <p>Done. Enquiries are grouped by priority and each one has an owner.</p>
+          {["Leads scored and tagged", "Follow-ups added to the CRM", "Summary sent to the team"].map((t) => (
+            <p key={t} className="flex items-center gap-2 text-white/70">
+              <Check aria-hidden className="size-3.5 text-emerald-400" /> {t}
+            </p>
+          ))}
+        </div>
+      </motion.div>
+      <motion.div variants={item} className="mt-auto rounded-2xl border border-white/10 bg-white/[0.04] p-3">
+        <div className="flex flex-wrap items-center gap-1.5">
+          {flow.map((f, i) => (
+            <span key={f} className="flex items-center gap-1.5">
+              <span
+                className={cn(
+                  "rounded-lg px-2.5 py-1.5 font-display text-[11px] font-semibold",
+                  i === 1 ? "bg-brand-orange text-white" : "bg-white/10 text-white/80",
+                )}
+              >
+                {f}
+              </span>
+              {i < flow.length - 1 && <span aria-hidden className="h-px w-4 bg-gradient-to-r from-white/40 to-white/10" />}
+            </span>
+          ))}
+        </div>
+      </motion.div>
+      <motion.div variants={item} className="flex items-center gap-2 rounded-xl bg-white/[0.06] py-1.5 pl-3.5 pr-1.5 text-white/40">
+        Ask your workflow anything…
+        <span className="ml-auto grid size-8 place-items-center rounded-lg bg-white text-navy-900">
+          <Send aria-hidden className="size-3.5" />
+        </span>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function SystemsScene() {
+  const kpis = [
+    { k: "Orders", v: "1,284", c: "text-brand-cyan" },
+    { k: "Invoices", v: "312", c: "text-brand-amber" },
+    { k: "In stock", v: "96%", c: "text-emerald-400" },
+  ];
+  const rows = [
+    { name: "Purchase order #4821", tag: "Approved", tone: "bg-emerald-400/15 text-emerald-300" },
+    { name: "Fee collection — Term 2", tag: "In progress", tone: "bg-brand-amber/15 text-brand-amber" },
+    { name: "Staff attendance sync", tag: "Synced", tone: "bg-brand-cyan/15 text-brand-cyan" },
+    { name: "Vendor invoice #1093", tag: "Review", tone: "bg-white/10 text-white/70" },
+  ];
+  return (
+    <motion.div variants={scene} initial="hidden" animate="show" exit="exit" className="flex h-full flex-col gap-3">
+      <div className="grid grid-cols-3 gap-3">
+        {kpis.map((k) => (
+          <motion.div key={k.k} variants={item} className="rounded-xl bg-white/[0.06] p-3">
+            <small className="text-[11px] text-white/50">{k.k}</small>
+            <b className={cn("block font-display text-lg leading-tight sm:text-xl", k.c)}>{k.v}</b>
+          </motion.div>
+        ))}
+      </div>
+      <motion.ul variants={item} className="flex-1 divide-y divide-white/[0.07] overflow-hidden rounded-2xl bg-white/[0.04]">
+        {rows.map((r) => (
+          <li key={r.name} className="flex items-center gap-3 px-3.5 py-2.5 text-[12.5px]">
+            <span className="size-7 shrink-0 rounded-lg bg-white/10" />
+            <span className="min-w-0 flex-1 truncate text-white/85">{r.name}</span>
+            <span className={cn("shrink-0 rounded-full px-2.5 py-1 text-[10.5px] font-semibold", r.tone)}>{r.tag}</span>
+          </li>
+        ))}
+      </motion.ul>
+    </motion.div>
+  );
+}
+
+function CloudScene() {
+  const services = ["web-app", "api-gateway", "postgres", "worker-queue"];
+  return (
+    <motion.div variants={scene} initial="hidden" animate="show" exit="exit" className="flex h-full flex-col gap-3">
+      <motion.div variants={item} className="relative h-24 overflow-hidden rounded-2xl bg-white/[0.05] sm:h-28">
+        <svg viewBox="0 0 300 100" preserveAspectRatio="none" className="absolute inset-0 size-full">
+          <defs>
+            <linearGradient id="cloud-fill" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stopColor="#34D399" stopOpacity="0.35" />
+              <stop offset="1" stopColor="#34D399" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <path d="M0 70 C 30 62, 50 74, 80 58 S 130 40, 160 48 S 220 26, 250 32 S 290 20, 300 22 V100 H0Z" fill="url(#cloud-fill)" />
+          <motion.path
+            d="M0 70 C 30 62, 50 74, 80 58 S 130 40, 160 48 S 220 26, 250 32 S 290 20, 300 22"
+            fill="none"
+            stroke="#34D399"
+            strokeWidth={2}
+            vectorEffect="non-scaling-stroke"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.4, ease: EASE, delay: 0.2 }}
+          />
+        </svg>
+        <span className="absolute left-3.5 top-3 font-display text-[11px] font-semibold uppercase tracking-[0.16em] text-white/55">
+          Traffic · auto-scaling
+        </span>
+      </motion.div>
+      <motion.ul variants={item} className="grid flex-1 content-start gap-2">
+        {services.map((s, i) => (
+          <li key={s} className="flex items-center gap-3 rounded-xl bg-white/[0.05] px-3.5 py-2.5 font-mono text-[12px] text-white/80">
+            <span className="relative flex size-2">
+              <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/60" style={{ animationDelay: `${i * 0.4}s` }} />
+              <span className="relative size-2 rounded-full bg-emerald-400" />
+            </span>
+            {s}
+            <span aria-hidden className="ml-auto hidden gap-[3px] sm:flex">
+              {Array.from({ length: 18 }, (_, j) => (
+                <span key={j} className={cn("h-4 w-[3px] rounded-full", j === 11 && i === 2 ? "bg-brand-amber" : "bg-emerald-400/70")} />
+              ))}
+            </span>
+          </li>
+        ))}
+      </motion.ul>
+    </motion.div>
+  );
+}
+
+const scenes: Record<string, () => React.JSX.Element> = {
+  "Web Platforms": WebScene,
+  "AI & Automation": AiScene,
+  "Business Systems": SystemsScene,
+  "Cloud & Infrastructure": CloudScene,
+};
+
+/* ---------------------------------------------------------
+   Hero
+   --------------------------------------------------------- */
 export function Hero() {
   const reduce = useReducedMotion();
+  const [active, setActive] = useState(0);
+  const [auto, setAuto] = useState(true);
+  const [hovering, setHovering] = useState(false);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 60, damping: 20 });
-  const sy = useSpring(my, { stiffness: 60, damping: 20 });
-  const imgX = useTransform(sx, (v) => v * -14);
-  const imgY = useTransform(sy, (v) => v * -10);
-  const cardX = useTransform(sx, (v) => v * 10);
-  const cardY = useTransform(sy, (v) => v * 8);
+  const sx = useSpring(mx, { stiffness: 70, damping: 20 });
+  const sy = useSpring(my, { stiffness: 70, damping: 20 });
+  const rotateY = useTransform(sx, (v) => v * 6);
+  const rotateX = useTransform(sy, (v) => v * -5);
 
   const onPointerMove = (e: React.PointerEvent<HTMLElement>) => {
     if (reduce || e.pointerType !== "mouse") return;
@@ -36,44 +267,84 @@ export function Hero() {
     my.set((e.clientY - r.top) / r.height - 0.5);
   };
 
+  const select = (i: number) => {
+    setAuto(false);
+    setActive(i);
+  };
+
+  const onTabKey = (e: React.KeyboardEvent) => {
+    const dir = ["ArrowDown", "ArrowRight"].includes(e.key) ? 1 : ["ArrowUp", "ArrowLeft"].includes(e.key) ? -1 : 0;
+    if (!dir) return;
+    e.preventDefault();
+    const next = (active + dir + heroCapabilities.length) % heroCapabilities.length;
+    select(next);
+    tabRefs.current[next]?.focus();
+  };
+
+  const current = heroCapabilities[active];
+  const Scene = scenes[current.title] ?? WebScene;
+  const cycling = auto && !reduce;
+
   return (
     <section
       id="home"
       aria-labelledby="hero-title"
-      onPointerMove={onPointerMove}
-      className="relative isolate flex flex-col bg-[radial-gradient(600px_400px_at_0%_10%,rgb(255_157_24/0.08),transparent_70%),radial-gradient(500px_400px_at_30%_90%,rgb(17_189_235/0.07),transparent_70%)] pt-[112px] lg:block lg:min-h-[860px] lg:pb-[210px] lg:pt-[142px]"
+      className="relative isolate overflow-hidden pb-12 pt-[112px] lg:pb-[150px] lg:pt-[clamp(100px,15svh,148px)]"
     >
-      {/* organic mask, echoing the logo's flowing S */}
-      <svg width="0" height="0" aria-hidden className="absolute">
-        <clipPath id="hero-clip" clipPathUnits="objectBoundingBox">
-          <path d="M.16,0 H1 V.9 C.9,.97 .78,.9 .62,.94 C.46,.98 .3,1 .18,.9 C.08,.8 .13,.66 .07,.52 C0,.36 .08,.2 .05,.1 C.04,.05 .1,0 .16,0Z" />
-        </clipPath>
-      </svg>
+      {/* ---------- backdrop: dot grid + brand glows ---------- */}
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(rgb(16_33_61/0.1)_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,#000_30%,transparent_80%)]" />
+        <div className="absolute -left-40 top-10 size-[520px] rounded-full bg-brand-amber/20 blur-[120px]" />
+        <div className="absolute -right-40 top-40 size-[520px] rounded-full bg-brand-cyan/20 blur-[120px]" />
+      </div>
 
       {/* ---------- copy ---------- */}
-      <div className="container-x relative z-[3] order-1">
-        <div className="max-w-[600px]">
-          <motion.p {...rise(0.05)} className="mb-6 flex items-center gap-3 font-display text-xs font-semibold uppercase tracking-[0.28em] text-navy-900">
-            <span aria-hidden className="h-0.5 w-7 rounded-full bg-gradient-to-r from-brand-orange to-brand-blue" />
-            Ideas <span className="text-brand-orange">flow.</span> Solutions <span className="text-brand-blue">grow.</span>
-          </motion.p>
-          <motion.h1
-            id="hero-title"
-            {...rise(0.15)}
-            className="text-[clamp(46px,12vw,60px)] font-extrabold leading-[0.98] tracking-[-0.045em] md:text-[clamp(60px,6.4vw,92px)]"
-          >
-            Turning
-            <br />
-            ideas into
-            <br />
+      <div className="container-x relative text-center">
+        <motion.p
+          {...rise(0.05)}
+          className="mx-auto inline-flex items-center gap-2.5 rounded-full border border-white bg-white/70 py-1.5 pl-1.5 pr-4 font-display text-[11.5px] font-semibold uppercase tracking-[0.22em] text-navy-900 shadow-soft backdrop-blur"
+        >
+          <span className="rounded-full bg-navy-900 px-2.5 py-1 text-[10px] tracking-[0.16em] text-white">Studio</span>
+          Ideas <span className="-ml-1.5 text-brand-orange">flow.</span> Solutions <span className="-ml-1.5 text-brand-blue">grow.</span>
+        </motion.p>
+
+        <motion.h1
+          id="hero-title"
+          {...rise(0.15)}
+          className="mx-auto mt-[clamp(16px,3svh,28px)] max-w-[1100px] text-[clamp(42px,11vw,58px)] font-extrabold leading-[1.02] tracking-[-0.045em] md:text-[clamp(44px,min(6.4vw,11.5svh),96px)]"
+        >
+          Turning ideas into <br className="hidden md:inline" />
+          <span className="relative inline-block whitespace-nowrap">
             <span className="text-gradient-warm">impactful</span>
-            <br />
-            <span className="text-gradient-ink">technology.</span>
-          </motion.h1>
-          <motion.p {...rise(0.28)} className="mt-7 max-w-[520px] text-[17px] text-muted md:text-[19px]">
-            {site.description}
-          </motion.p>
-          <motion.div {...rise(0.38)} className="mt-9 flex flex-col gap-3.5 sm:flex-row sm:flex-wrap">
+            <svg aria-hidden viewBox="0 0 300 24" preserveAspectRatio="none" className="absolute -bottom-[0.12em] left-[2%] h-[0.22em] w-[96%]">
+              <defs>
+                <linearGradient id="hero-swoosh" x1="0" x2="1">
+                  <stop offset="0" stopColor="#FF9D18" />
+                  <stop offset="0.6" stopColor="#FF6A00" />
+                  <stop offset="1" stopColor="#11BDEB" />
+                </linearGradient>
+              </defs>
+              <motion.path
+                d="M4 18 C 70 6, 170 2, 296 10"
+                fill="none"
+                stroke="url(#hero-swoosh)"
+                strokeWidth={6}
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1.1, ease: EASE, delay: 0.8 }}
+              />
+            </svg>
+          </span>{" "}
+          <span className="text-gradient-ink">technology.</span>
+        </motion.h1>
+
+        <motion.p {...rise(0.28)} className="mx-auto mt-[clamp(16px,3svh,28px)] max-w-[640px] text-[17px] text-muted md:text-[18px]">
+          {site.description}
+        </motion.p>
+
+        <motion.div {...rise(0.38)} className="mt-[clamp(20px,4svh,36px)] flex justify-center">
+          <div className="relative flex flex-col gap-3.5 sm:flex-row">
             <Button href="#contact" size="lg">
               Start a Project
             </Button>
@@ -89,166 +360,162 @@ export function Hero() {
             >
               Explore Our Work
             </Button>
-          </motion.div>
 
-          <motion.dl {...rise(0.5)} className="mt-12 grid grid-cols-2 gap-3 sm:flex sm:gap-0">
-            {heroStats.map((s, i) => (
-              <div
-                key={s.label}
-                className={cn(
-                  "rounded-[18px] bg-white p-4 shadow-clay sm:rounded-none sm:bg-transparent sm:p-0 sm:px-6 sm:shadow-none",
-                  i === 0 ? "sm:pl-0" : "sm:border-l sm:border-ink/10",
-                )}
-              >
-                <dt className="sr-only">{s.label}</dt>
-                <dd className="font-display text-[34px] font-bold leading-[1.1] tracking-[-0.03em] text-navy-900">
-                  <CountUp value={s.value} suffix={s.suffix} />
-                </dd>
-                <dd aria-hidden className="mt-1 text-[12.5px] leading-tight text-muted">
-                  {s.label}
-                </dd>
-              </div>
-            ))}
-            <div className="flex items-center gap-3 rounded-[18px] bg-white p-4 shadow-clay sm:rounded-none sm:border-l sm:border-ink/10 sm:bg-transparent sm:p-0 sm:px-6 sm:shadow-none">
-              <dt className="sr-only">Reach</dt>
-              <dd aria-hidden>
-                <svg viewBox="0 0 48 24" className="h-[26px] w-12">
-                  <defs>
-                    <linearGradient id="inf" x1="0" x2="1">
-                      <stop offset="0" stopColor="#FF9D18" />
-                      <stop offset="1" stopColor="#F04432" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M24 12c-4-6-8-8-12-8a8 8 0 0 0 0 16c4 0 8-2 12-8s8-8 12-8a8 8 0 0 1 0 16c-4 0-8-2-12-8z" stroke="url(#inf)" strokeWidth="3.2" fill="none" />
-                </svg>
-              </dd>
-              <dd className="text-[12.5px] leading-tight text-muted">
-                Growing
+            {/* handwritten note, pinned beside the buttons */}
+            <motion.p
+              aria-hidden
+              initial={{ opacity: 0, x: 12, rotate: -4 }}
+              animate={{ opacity: 1, x: 0, rotate: -4 }}
+              transition={{ duration: 0.9, ease: EASE, delay: 1 }}
+              className="absolute left-[calc(100%+12px)] top-1/2 hidden -translate-y-1/2 items-center gap-1.5 whitespace-nowrap text-left font-script text-[24px] leading-[1.05] text-navy-900/70 lg:flex"
+            >
+              <svg viewBox="0 0 60 44" className="h-10 w-12 shrink-0 text-brand-orange">
+                <path d="M56 8 C 46 30, 26 36, 6 30 M6 30 l10 -8 M6 30 l11 5" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span>
+                Technology in motion,
                 <br />
-                <b className="font-display text-[17px] text-navy-900">Globally</b>
-              </dd>
-            </div>
-          </motion.dl>
-        </div>
+                for a better tomorrow
+              </span>
+            </motion.p>
+          </div>
+        </motion.div>
       </div>
 
-      {/* ---------- cinematic visual ---------- */}
-      <div className="relative order-2 mx-[clamp(16px,4vw,48px)] mt-12 h-[440px] sm:h-[520px] lg:absolute lg:right-0 lg:top-0 lg:z-[-1] lg:m-0 lg:h-[calc(100%-40px)] lg:w-[58%]">
+      {/* ---------- build console ---------- */}
+      <div className="container-x mt-14 lg:mt-16">
         <motion.div
-          aria-hidden
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.6, ease: EASE }}
-          className="absolute inset-0 overflow-hidden rounded-[32px_110px_32px_32px] bg-gradient-to-br from-[#2a4a7a] to-[#f39b4a] lg:rounded-none lg:[clip-path:url(#hero-clip)]"
+          initial={{ opacity: 0, y: 48, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.1, ease: EASE, delay: 0.45 }}
+          onPointerMove={onPointerMove}
+          onPointerEnter={() => setHovering(true)}
+          onPointerLeave={() => {
+            setHovering(false);
+            mx.set(0);
+            my.set(0);
+          }}
+          className="relative overflow-hidden rounded-[28px] bg-navy-section p-3 shadow-[0_50px_100px_-40px_rgb(7_26_53/0.6)] sm:p-4 lg:rounded-[36px] lg:p-5"
         >
-          <motion.div style={{ x: imgX, y: imgY }} className="absolute -inset-6">
-            <Image
-              src="/images/hero-mountains.jpg"
-              alt=""
-              fill
-              priority
-              sizes="(min-width: 1024px) 58vw, 100vw"
-              className="object-cover object-[60%_40%]"
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(7_26_53/0.1)_0%,rgb(7_26_53/0.55)_100%)] lg:bg-[linear-gradient(90deg,rgb(247_248_250/0.55)_0%,rgb(247_248_250/0)_26%),linear-gradient(180deg,rgb(7_26_53/0.15)_0%,rgb(7_26_53/0)_30%,rgb(7_26_53/0.45)_100%),linear-gradient(200deg,rgb(255_140_40/0.22),transparent_50%)]" />
-          <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 size-full">
-            <path d={FLOW} fill="none" stroke="rgb(255 170 70 / 0.5)" strokeWidth={34} strokeLinecap="round" className="blur-[14px]" />
-            <motion.path
-              d={FLOW}
-              fill="none"
-              stroke="#FFB347"
-              strokeWidth={5}
-              strokeLinecap="round"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 3.2, ease: EASE, delay: 0.5 }}
-            />
-            <motion.path
-              d={FLOW_2}
-              fill="none"
-              stroke="#4FD3FF"
-              strokeWidth={3}
-              strokeLinecap="round"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 3.2, ease: EASE, delay: 0.8 }}
-            />
-          </svg>
-        </motion.div>
+          <Image
+            src="/images/hero-mountains.jpg"
+            alt=""
+            fill
+            priority
+            sizes="(min-width: 1336px) 1240px, 100vw"
+            className="object-cover object-[60%_40%] opacity-[0.16] mix-blend-luminosity"
+          />
+          <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
 
-        {/* overlay layer sits outside the clip so cards can float freely */}
-        <motion.div style={{ x: cardX, y: cardY }} className="pointer-events-none absolute inset-0">
-          <motion.p
-            aria-hidden
-            initial={{ opacity: 0, y: 16, rotate: -8 }}
-            animate={{ opacity: 1, y: 0, rotate: -8 }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.5 }}
-            className="absolute left-[20%] top-[118px] hidden font-script text-[30px] leading-[1.05] text-white [text-shadow:0_2px_18px_rgb(7_26_53/0.45)] xl:block"
-          >
-            Technology in motion,
-            <br />
-            for a better tomorrow
-          </motion.p>
-
-          <ul
-            aria-label="What we build"
-            className="pointer-events-auto absolute inset-x-4 bottom-4 grid grid-cols-2 gap-2 lg:inset-x-auto lg:bottom-auto lg:right-[clamp(20px,4vw,64px)] lg:top-[132px] lg:flex lg:flex-col lg:items-end lg:gap-3"
-          >
-            {heroCapabilities.map((c, i) => (
-              <motion.li
-                key={c.title}
-                initial={{ opacity: 0, x: 24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: EASE, delay: 0.7 + i * 0.12 }}
-                whileHover={{ x: -6 }}
-                className={cn(
-                  "glass flex items-center gap-2.5 rounded-[14px] p-2 pr-3 lg:min-w-[244px] lg:gap-3 lg:rounded-[18px] lg:p-3 lg:pr-5",
-                  ["lg:mr-0", "lg:mr-7", "lg:mr-2", "lg:mr-9"][i],
-                )}
+          <div className="relative grid gap-3 lg:grid-cols-[minmax(260px,320px)_1fr] lg:gap-5">
+            {/* capability tabs */}
+            <div className="flex flex-col">
+              <p className="hidden px-3 pb-3 pt-2 font-display text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 lg:block">
+                What we build
+              </p>
+              <div
+                role="tablist"
+                aria-label="What we build"
+                aria-orientation="vertical"
+                onKeyDown={onTabKey}
+                className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0 lg:pb-0"
               >
-                <span className={cn("grid size-8 shrink-0 place-items-center rounded-[10px] lg:size-10 lg:rounded-xl", accents[c.accent].soft)}>
-                  <c.icon aria-hidden className="size-4 lg:size-5" />
-                </span>
-                <span className="min-w-0">
-                  <b className="block truncate font-display text-[12.5px] font-semibold text-navy-900 lg:text-sm">{c.title}</b>
-                  <small className="hidden text-[11px] text-muted min-[400px]:block lg:text-xs">{c.caption}</small>
-                </span>
-              </motion.li>
-            ))}
-          </ul>
+                {heroCapabilities.map((c, i) => {
+                  const on = i === active;
+                  return (
+                    <button
+                      key={c.title}
+                      ref={(el) => {
+                        tabRefs.current[i] = el;
+                      }}
+                      type="button"
+                      role="tab"
+                      id={`hero-tab-${i}`}
+                      aria-selected={on}
+                      aria-controls="hero-panel"
+                      tabIndex={on ? 0 : -1}
+                      onClick={() => select(i)}
+                      className={cn(
+                        "group relative flex shrink-0 items-center gap-3 overflow-hidden rounded-[18px] p-2.5 pr-4 text-left transition-colors duration-300 lg:p-3",
+                        on ? "bg-white text-navy-900" : "text-white hover:bg-white/[0.07]",
+                      )}
+                    >
+                      <span
+                        className={cn(
+                          "grid size-10 shrink-0 place-items-center rounded-xl transition-colors duration-300",
+                          on ? cn("bg-gradient-to-br text-white", accents[c.accent].badge) : "bg-white/10 text-white/80",
+                        )}
+                      >
+                        <c.icon aria-hidden className="size-5" />
+                      </span>
+                      <span className="min-w-0">
+                        <b className="block whitespace-nowrap font-display text-sm font-semibold">{c.title}</b>
+                        <small className={cn("hidden text-xs lg:block", on ? "text-muted" : "text-white/50")}>{c.caption}</small>
+                      </span>
+                      <span className={cn("ml-auto hidden font-display text-xs font-semibold lg:block", on ? "text-brand-orange" : "text-white/30")}>
+                        0{i + 1}
+                      </span>
+                      {on && cycling && (
+                        <span
+                          aria-hidden
+                          key={active}
+                          onAnimationEnd={() => setActive((a) => (a + 1) % heroCapabilities.length)}
+                          style={{ animationPlayState: hovering ? "paused" : "running" }}
+                          className="absolute inset-x-3 bottom-0 h-[3px] origin-left animate-progress rounded-full bg-gradient-to-r from-brand-orange to-brand-cyan"
+                        />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
 
-          <motion.a
-            href="#process"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: EASE, delay: 1.2 }}
-            className="group pointer-events-auto absolute left-5 top-5 flex items-center gap-3.5 font-display text-[15px] font-semibold leading-tight text-white lg:bottom-[190px] lg:left-[44%] lg:top-auto"
-          >
-            <span className="relative grid size-16 place-items-center rounded-full bg-white/95 text-navy-900 shadow-[0_14px_30px_-10px_rgb(7_26_53/0.5)] transition-transform duration-300 group-hover:scale-105">
-              <span aria-hidden className="absolute -inset-2 animate-pulse-ring rounded-full border-[1.5px] border-white/55" />
-              <Play aria-hidden className="ml-0.5 size-5 fill-current" />
-            </span>
-            <span>
-              See How
-              <br />
-              <span className="font-normal opacity-85">We Build Impact</span>
-            </span>
-          </motion.a>
+              {/* stats */}
+              <dl className="mt-3 grid grid-cols-3 gap-2 lg:mt-auto lg:gap-0 lg:border-t lg:border-white/10 lg:pt-4">
+                {heroStats.map((s, i) => (
+                  <div key={s.label} className={cn("rounded-2xl bg-white/[0.05] p-3 lg:rounded-none lg:bg-transparent lg:px-3 lg:py-1", i > 0 && "lg:border-l lg:border-white/10")}>
+                    <dt className="sr-only">{s.label}</dt>
+                    <dd className="font-display text-2xl font-bold leading-tight tracking-[-0.03em] text-white">
+                      <CountUp value={s.value} suffix={s.suffix} />
+                    </dd>
+                    <dd aria-hidden className="text-[11.5px] leading-tight text-white/55">
+                      {s.label}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
+            {/* console window */}
+            <motion.div style={{ rotateX, rotateY, transformPerspective: 1600 }} className="relative">
+              <div className="flex h-full flex-col overflow-hidden rounded-[22px] border border-white/10 bg-navy-950/60 shadow-[inset_0_1px_0_rgb(255_255_255/0.06)] backdrop-blur-md lg:rounded-[26px]">
+                <div className="flex items-center gap-3 border-b border-white/[0.07] px-4 py-3">
+                  <span aria-hidden className="flex gap-1.5">
+                    <span className="size-2.5 rounded-full bg-brand-red/80" />
+                    <span className="size-2.5 rounded-full bg-brand-amber/80" />
+                    <span className="size-2.5 rounded-full bg-emerald-400/80" />
+                  </span>
+                  <span className="min-w-0 truncate rounded-lg bg-white/[0.06] px-3 py-1 font-mono text-[11.5px] text-white/60">
+                    ~/sabariyatech/<span className="text-white">{slug(current.title)}</span>
+                  </span>
+                  <span className="ml-auto flex shrink-0 items-center gap-1.5 font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-300">
+                    <span className="size-1.5 rounded-full bg-emerald-400" /> Live
+                  </span>
+                </div>
+                <div
+                  id="hero-panel"
+                  role="tabpanel"
+                  aria-labelledby={`hero-tab-${active}`}
+                  className="relative h-[330px] p-4 sm:h-[360px] lg:h-[400px] lg:p-5"
+                >
+                  <AnimatePresence mode="wait">
+                    <Scene key={current.title} />
+                  </AnimatePresence>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
-
-      {/* ---------- organic transition ---------- */}
-      <svg
-        aria-hidden
-        viewBox="0 0 1440 180"
-        preserveAspectRatio="none"
-        className="relative z-[1] order-3 -mt-14 h-[90px] w-full lg:absolute lg:inset-x-0 lg:-bottom-px lg:mt-0 lg:h-[180px]"
-      >
-        <path className="fill-canvas" d="M0 92 C 220 150 420 160 640 118 C 860 76 1020 30 1200 52 C 1310 66 1390 96 1440 110 V180 H0Z" />
-        <path className="fill-none stroke-brand-blue/35" strokeWidth={2} vectorEffect="non-scaling-stroke" d="M0 92 C 220 150 420 160 640 118 C 860 76 1020 30 1200 52 C 1310 66 1390 96 1440 110" />
-        <path className="fill-none stroke-brand-orange/30" strokeWidth={2} strokeDasharray="2 8" vectorEffect="non-scaling-stroke" d="M0 104 C 240 160 440 166 660 126 C 880 86 1030 44 1210 64 C 1320 76 1395 104 1440 118" />
-      </svg>
     </section>
   );
 }
