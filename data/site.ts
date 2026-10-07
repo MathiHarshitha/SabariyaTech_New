@@ -28,7 +28,11 @@ export const site = {
   name: "SabariyaTech",
   // TODO: confirm the production domain before launch
   url: "https://sabariyatech.in",
-  email: "hello@sabariyatech.in",
+  email: "team@sabariyatech.in",
+  phone: "+91 96525 57187",
+  phoneHref: "tel:+919652557187",
+  address: "Benz Circle, Vijayawada, Andhra Pradesh, India",
+  city: "Vijayawada",
   tagline: "Turning ideas into impactful technology.",
   description:
     "SabariyaTech builds secure digital platforms, AI-powered systems and scalable infrastructure that help businesses automate, grow and create real impact.",
@@ -36,13 +40,14 @@ export const site = {
 };
 
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Products", href: "#products" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Insights", href: "#insights" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Products", href: "/products" },
+  { label: "Projects", href: "/projects" },
+  { label: "Team", href: "/team" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 /* ---------------------------------------------------------
@@ -335,27 +340,29 @@ export const footerColumns = [
   {
     title: "Products",
     links: [
-      { label: "LinkFix", href: "#products" },
-      { label: "AI Editor", href: "#products" },
-      { label: "Coming Soon", href: "#products" },
+      { label: "LinkFix", href: "/products#linkfix" },
+      { label: "AI Editor", href: "/products#ai-editor" },
+      { label: "Institute Portal", href: "/products#institute-portal" },
+      { label: "Coming Soon", href: "/products#more" },
     ],
   },
   {
-    title: "Solutions",
+    title: "Services",
     links: [
-      { label: "Web Development", href: "#solutions" },
-      { label: "Business Systems", href: "#solutions" },
-      { label: "AI & Automation", href: "#solutions" },
-      { label: "Cloud & DevOps", href: "#solutions" },
+      { label: "Web Platforms", href: "/services#web-platforms" },
+      { label: "AI & Automation", href: "/services#ai-automation" },
+      { label: "Backend Infrastructure", href: "/services#backend-infrastructure" },
+      { label: "SEO & Marketing", href: "/services#offerings" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About", href: "#about" },
-      { label: "Our Work", href: "#work" },
-      { label: "Insights", href: "#insights" },
-      { label: "Contact", href: "#contact" },
+      { label: "About", href: "/about" },
+      { label: "Projects", href: "/projects" },
+      { label: "Team", href: "/team" },
+      { label: "Careers", href: "/careers" },
+      { label: "Contact", href: "/contact" },
     ],
   },
 ];

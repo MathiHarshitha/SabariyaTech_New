@@ -58,6 +58,8 @@ const jsonLd = {
   name: site.name,
   url: site.url,
   email: site.email,
+  telephone: site.phone,
+  address: { "@type": "PostalAddress", streetAddress: "Benz Circle", addressLocality: "Vijayawada", addressRegion: "Andhra Pradesh", addressCountry: "IN" },
   logo: `${site.url}/brand/logo-mark.png`,
   description: site.description,
 };

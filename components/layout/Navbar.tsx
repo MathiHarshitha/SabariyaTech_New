@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { Mail, Menu, X } from "lucide-react";
+import { Mail, Menu, Phone, X } from "lucide-react";
 import { navLinks, site } from "@/data/site";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
@@ -10,30 +12,16 @@ import { cn, EASE } from "@/lib/utils";
 
 export function Navbar() {
   const { scrollY } = useScroll();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState<string>("#home");
   const [open, setOpen] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
 
   useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 40));
 
-  // Highlight the section currently in the middle of the viewport.
-  useEffect(() => {
-    const sections = navLinks
-      .map((l) => document.querySelector<HTMLElement>(l.href))
-      .filter((el): el is HTMLElement => el !== null);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActive(`#${entry.target.id}`);
-        }
-      },
-      { rootMargin: "-45% 0px -50% 0px" },
-    );
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
-  }, []);
+  // "/team/posibabu-yalla" still highlights "Team".
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`));
 
   // Lock scroll, move focus and support Escape while the menu is open.
   useEffect(() => {
@@ -64,35 +52,35 @@ export function Navbar() {
               : "h-[72px]",
           )}
         >
-          <a href="#home" aria-label={`${site.name} home`} className="shrink-0">
+          <Link href="/" aria-label={`${site.name} home`} className="shrink-0">
             <Logo priority />
-          </a>
+          </Link>
 
-          <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex gap-1">
+          <nav aria-label="Primary" className="hidden xl:block">
+            <ul className="flex gap-0.5">
               {navLinks.map((l) => (
                 <li key={l.href}>
-                  <a
+                  <Link
                     href={l.href}
-                    aria-current={active === l.href ? "true" : undefined}
-                    className="relative block rounded-[10px] px-3.5 py-2 text-[14.5px] font-medium text-navy-900 transition-colors hover:text-brand-orange xl:px-4"
+                    aria-current={isActive(l.href) ? "page" : undefined}
+                    className="relative block rounded-[10px] px-3 py-2 text-[14.5px] font-medium text-navy-900 transition-colors hover:text-brand-orange 2xl:px-4"
                   >
                     {l.label}
-                    {active === l.href && (
+                    {isActive(l.href) && (
                       <motion.span
                         layoutId="nav-underline"
                         className="absolute inset-x-0 bottom-0 mx-auto h-[2.5px] w-[18px] rounded-full bg-brand-orange"
                         transition={{ type: "spring", stiffness: 420, damping: 34 }}
                       />
                     )}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button href="#contact" size="sm" className="hidden sm:inline-flex">
+            <Button href="/contact" size="sm" className="hidden sm:inline-flex">
               Let&apos;s Build
             </Button>
             <button
@@ -154,26 +142,30 @@ export function Navbar() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.08 + i * 0.04, duration: 0.4, ease: EASE }}
                     >
-                      <a
+                      <Link
                         href={l.href}
                         onClick={() => setOpen(false)}
+                        aria-current={isActive(l.href) ? "page" : undefined}
                         className={cn(
-                          "block border-b border-ink/[0.07] py-2 font-display text-[30px] font-semibold tracking-[-0.03em] transition-all duration-300 hover:pl-2 hover:text-brand-orange",
-                          active === l.href ? "text-brand-orange" : "text-navy-900",
+                          "block border-b border-ink/[0.07] py-1.5 font-display text-[26px] font-semibold tracking-[-0.03em] transition-all duration-300 hover:pl-2 hover:text-brand-orange",
+                          isActive(l.href) ? "text-brand-orange" : "text-navy-900",
                         )}
                       >
                         {l.label}
-                      </a>
+                      </Link>
                     </motion.li>
                   ))}
                 </ul>
               </nav>
               <div className="mt-auto flex flex-col gap-4 pt-8">
-                <Button href="#contact" onClick={() => setOpen(false)}>
+                <Button href="/contact" onClick={() => setOpen(false)}>
                   Start a Project
                 </Button>
                 <a href={`mailto:${site.email}`} className="flex items-center gap-2.5 font-medium text-muted hover:text-navy-900">
                   <Mail aria-hidden className="size-[18px]" /> {site.email}
+                </a>
+                <a href={site.phoneHref} className="-mt-2 flex items-center gap-2.5 font-medium text-muted hover:text-navy-900">
+                  <Phone aria-hidden className="size-[18px]" /> {site.phone}
                 </a>
               </div>
             </motion.div>

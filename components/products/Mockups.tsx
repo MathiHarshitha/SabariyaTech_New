@@ -1,7 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FileText, Gauge, LayoutDashboard, Link2, Plus, Repeat2, Send, Settings, Sparkles } from "lucide-react";
+import {
+  BookOpen,
+  CalendarCheck,
+  ClipboardList,
+  FileText,
+  Gauge,
+  GraduationCap,
+  LayoutDashboard,
+  Link2,
+  Plus,
+  Repeat2,
+  Send,
+  Settings,
+  Sparkles,
+  UserPlus,
+  Users,
+  Wallet,
+} from "lucide-react";
 import { cn, EASE } from "@/lib/utils";
 
 /* Shared browser chrome */
@@ -192,6 +209,98 @@ export function AIEditorMockup() {
               <Send className="size-3" />
             </span>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+export function InstitutePortalMockup() {
+  const nav = [
+    { icon: LayoutDashboard, label: "Dashboard", on: true },
+    { icon: UserPlus, label: "Admissions" },
+    { icon: Users, label: "Students" },
+    { icon: CalendarCheck, label: "Attendance" },
+    { icon: Wallet, label: "Fees" },
+    { icon: ClipboardList, label: "Exams" },
+    { icon: BookOpen, label: "Courses" },
+  ];
+  const attendance = [92, 88, 95, 90, 97, 86];
+  const admissions = [
+    { name: "Aarav K.", course: "B.Com · Year 1", tag: "Approved", tone: "bg-[#DDF6EC] text-[#0E8A5F]" },
+    { name: "Sneha R.", course: "Class 9 · Section B", tag: "Docs pending", tone: "bg-[#FFF1DB] text-[#C26A00]" },
+    { name: "Rahul M.", course: "Python Full Stack", tag: "Fee paid", tone: "bg-brand-blue/10 text-brand-blue" },
+  ];
+  return (
+    <div className="flex h-full flex-col overflow-hidden rounded-2xl bg-[#F4F6FA] text-ink">
+      <Chrome url="portal.yourinstitute.edu/admin" />
+      <div className="flex min-h-0 flex-1">
+        <aside className="hidden w-[150px] shrink-0 flex-col gap-1 bg-navy-900 p-3 sm:flex">
+          <div className="mb-3 flex items-center gap-2 px-1.5 font-display text-[13px] font-bold text-white">
+            <span className="grid size-6 place-items-center rounded-md bg-brand-indigo">
+              <GraduationCap className="size-3.5" strokeWidth={2.5} />
+            </span>
+            Institute
+          </div>
+          {nav.map((n) => (
+            <span key={n.label} className={cn("flex items-center gap-2 rounded-lg px-2 py-1.5 text-[11.5px]", n.on ? "bg-white/10 text-white" : "text-white/55")}>
+              <n.icon className={cn("size-3.5", n.on && "text-brand-cyan")} /> {n.label}
+            </span>
+          ))}
+        </aside>
+        <div className="flex min-w-0 flex-1 flex-col gap-3 p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <b className="font-display text-[15px]">Good morning, Principal</b>
+              <p className="text-[10.5px] text-muted">Academic year 2026–27 · Term 1</p>
+            </div>
+            <span className="rounded-lg bg-brand-indigo px-2.5 py-1 text-[10.5px] font-semibold text-white">+ New admission</span>
+          </div>
+          <div className="grid grid-cols-3 gap-2.5">
+            {[
+              { k: "Students", v: "1,240" },
+              { k: "Attendance today", v: "94%", green: true },
+              { k: "Fees collected", v: "82%" },
+            ].map((s) => (
+              <div key={s.k} className="rounded-xl bg-white p-2.5 shadow-[0_2px_6px_rgb(16_33_61/0.05)]">
+                <small className="block truncate text-[10px] text-muted">{s.k}</small>
+                <b className={cn("font-display text-lg", s.green && "text-[#0E8A5F]")}>{s.v}</b>
+              </div>
+            ))}
+          </div>
+          <div className="rounded-xl bg-white p-3">
+            <div className="mb-2 flex items-center justify-between text-[10.5px]">
+              <b className="font-display text-[12px]">Attendance by class</b>
+              <span className="text-muted">This week</span>
+            </div>
+            <div className="flex h-[70px] items-end gap-2.5">
+              {attendance.map((h, i) => (
+                <div key={i} className="flex flex-1 flex-col items-center gap-1">
+                  <motion.span
+                    initial={{ height: 0 }}
+                    animate={{ height: `${h - 30}px` }}
+                    transition={{ duration: 0.8, ease: EASE, delay: 0.1 + i * 0.05 }}
+                    className="w-full rounded-t-[4px] bg-gradient-to-b from-[#8C7CF5] to-brand-indigo"
+                  />
+                  <small className="text-[8.5px] text-muted">{["VI", "VII", "VIII", "IX", "X", "XI"][i]}</small>
+                </div>
+              ))}
+            </div>
+          </div>
+          <ul className="flex flex-col gap-1.5">
+            {admissions.map((a) => (
+              <li key={a.name} className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5 text-[10.5px]">
+                <span className="grid size-6 place-items-center rounded-full bg-brand-indigo/10 font-display text-[9px] font-bold text-brand-indigo">
+                  {a.name[0]}
+                </span>
+                <span className="min-w-0 flex-1 truncate">
+                  <b className="font-semibold">{a.name}</b> <span className="text-muted">· {a.course}</span>
+                </span>
+                <span className={cn("rounded px-1.5 font-semibold", a.tone)}>{a.tag}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

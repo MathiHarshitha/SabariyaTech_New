@@ -1,4 +1,5 @@
-import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+import { ChevronDown, MapPin, Phone } from "lucide-react";
 import { footerColumns, site, socials } from "@/data/site";
 import { Logo } from "@/components/ui/Logo";
 import { socialIcons } from "@/components/ui/BrandIcons";
@@ -9,9 +10,9 @@ export function Footer() {
       <div className="container-x">
         <div className="grid gap-0 pb-12 md:grid-cols-3 md:gap-8 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr]">
           <div className="mb-8 md:col-span-3 lg:col-span-1 lg:mb-0">
-            <a href="#home" aria-label={`${site.name} home`}>
+            <Link href="/" aria-label={`${site.name} home`}>
               <Logo />
-            </a>
+            </Link>
             <p className="mt-5 max-w-[240px] text-[15px] leading-relaxed">{site.footerLine}</p>
           </div>
 
@@ -26,9 +27,9 @@ export function Footer() {
                 <ul className="flex flex-col gap-2.5 pb-5 text-[14.5px]">
                   {col.links.map((l) => (
                     <li key={l.label}>
-                      <a href={l.href} className="transition-colors hover:text-brand-amber">
+                      <Link href={l.href} className="transition-colors hover:text-brand-amber">
                         {l.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -39,9 +40,9 @@ export function Footer() {
                 <ul className="flex flex-col gap-2.5 text-[14.5px]">
                   {col.links.map((l) => (
                     <li key={l.label}>
-                      <a href={l.href} className="transition-colors hover:text-brand-amber">
+                      <Link href={l.href} className="transition-colors hover:text-brand-amber">
                         {l.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -74,6 +75,12 @@ export function Footer() {
             <a href={`mailto:${site.email}`} className="mt-5 inline-block text-[14.5px] transition-colors hover:text-brand-amber">
               {site.email}
             </a>
+            <a href={site.phoneHref} className="mt-2.5 flex items-center gap-2 text-[14.5px] transition-colors hover:text-brand-amber">
+              <Phone aria-hidden className="size-4 text-brand-amber" /> {site.phone}
+            </a>
+            <p className="mt-2.5 flex items-start gap-2 text-[14.5px] leading-snug">
+              <MapPin aria-hidden className="mt-0.5 size-4 shrink-0 text-brand-amber" /> {site.address}
+            </p>
           </div>
         </div>
 
