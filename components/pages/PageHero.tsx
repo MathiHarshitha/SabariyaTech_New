@@ -101,10 +101,6 @@ export function PageHero({
 
       {children}
 
-      <svg aria-hidden viewBox="0 0 1440 60" preserveAspectRatio="none" className="pointer-events-none absolute inset-x-0 bottom-0 h-[40px] w-full">
-        <path className="fill-none stroke-brand-blue/30" strokeWidth={2} vectorEffect="non-scaling-stroke" d="M0 30 C 240 58 480 58 720 34 C 960 10 1200 6 1440 26" />
-        <path className="fill-none stroke-brand-orange/30" strokeWidth={2} strokeDasharray="2 8" vectorEffect="non-scaling-stroke" d="M0 40 C 260 66 500 64 740 42 C 980 20 1210 16 1440 36" />
-      </svg>
     </section>
   );
 }

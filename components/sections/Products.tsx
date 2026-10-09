@@ -6,7 +6,6 @@ import { Box, Check, Link2, PenLine, type LucideIcon } from "lucide-react";
 import { products, site, type ProductId } from "@/data/site";
 import { accents } from "@/lib/accents";
 import { Button } from "@/components/ui/Button";
-import { Curve } from "@/components/ui/Curve";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
@@ -35,8 +34,7 @@ export function Products() {
   };
 
   return (
-    <section id="products" aria-labelledby="products-title" className="bg-navy-section relative overflow-hidden py-32 text-white md:py-[200px]">
-      <Curve variant="into-dark-a" position="top" />
+    <section id="products" aria-labelledby="products-title" className="bg-navy-section relative overflow-hidden py-24 text-white md:py-32">
       <span aria-hidden className="pointer-events-none absolute -right-40 top-1/3 size-[520px] rounded-full bg-brand-blue/10 blur-3xl" />
 
       <div className="container-x relative z-[2]">
@@ -173,7 +171,6 @@ export function Products() {
         </div>
       </div>
 
-      <Curve variant="out-of-dark-a" position="bottom" lineClass="stroke-brand-cyan/70" />
     </section>
   );
 }
