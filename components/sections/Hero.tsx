@@ -490,7 +490,7 @@ export function Hero() {
               <div className="flex h-full flex-col overflow-hidden rounded-[22px] border border-white/10 bg-navy-950/60 shadow-[inset_0_1px_0_rgb(255_255_255/0.06)] backdrop-blur-md lg:rounded-[26px]">
                 <div className="flex items-center gap-3 border-b border-white/[0.07] px-4 py-3">
                   <span aria-hidden className="flex gap-1.5">
-                    <span className="size-2.5 rounded-full bg-brand-red/80" />
+                    <span className="size-2.5 rounded-full bg-brand-orange/80" />
                     <span className="size-2.5 rounded-full bg-brand-amber/80" />
                     <span className="size-2.5 rounded-full bg-emerald-400/80" />
                   </span>

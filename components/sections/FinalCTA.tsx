@@ -124,7 +124,7 @@ export function FinalCTA() {
             <form id="brief" onSubmit={onSubmit} aria-label="Project brief" className="scroll-mt-28 self-start rounded-[24px] bg-white p-1.5 text-ink shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)] lg:rotate-[0.6deg]">
               <div className="flex items-center gap-3 rounded-[19px] bg-canvas px-3.5 py-2.5">
                 <span aria-hidden className="flex gap-1.5">
-                  <span className="size-2.5 rounded-full bg-brand-red/70" />
+                  <span className="size-2.5 rounded-full bg-brand-orange/70" />
                   <span className="size-2.5 rounded-full bg-brand-amber/70" />
                   <span className="size-2.5 rounded-full bg-emerald-400/80" />
                 </span>
@@ -172,7 +172,7 @@ export function FinalCTA() {
 
                 <button
                   type="submit"
-                  className="group mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-[linear-gradient(100deg,var(--color-brand-orange)_0%,var(--color-brand-orange)_45%,var(--color-brand-red)_100%)] bg-[length:200%_100%] font-display text-[14px] font-semibold text-white shadow-cta transition-all duration-300 ease-premium hover:-translate-y-0.5 hover:bg-[position:100%_0]"
+                  className="group mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-[linear-gradient(100deg,var(--color-brand-orange)_0%,var(--color-brand-orange)_45%,var(--color-brand-blue)_100%)] bg-[length:200%_100%] font-display text-[14px] font-semibold text-white shadow-cta transition-all duration-300 ease-premium hover:-translate-y-0.5 hover:bg-[position:100%_0]"
                 >
                   Send brief
                   <ArrowRight aria-hidden className="size-[18px] transition-transform duration-300 group-hover:translate-x-1" />
