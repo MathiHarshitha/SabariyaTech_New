@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ChevronDown, Mail, MapPin, PhoneCall } from "lucide-react";
 import { footerColumns, site, socials } from "@/data/site";
 import { socialIcons } from "@/components/ui/BrandIcons";
+import { Logo } from "@/components/ui/Logo";
 
 function Heading({ children }: { children: React.ReactNode }) {
   return (
@@ -50,9 +51,8 @@ export function Footer() {
         <div className="grid gap-0 pb-12 md:grid-cols-3 md:gap-10 md:pb-20 lg:grid-cols-[1.35fr_1fr_1.05fr_0.8fr_1.25fr] lg:gap-8">
           {/* brand */}
           <div className="mb-10 md:col-span-3 lg:col-span-1 lg:mb-0">
-            <Link href="/" aria-label={`${site.name} home`} className="inline-block font-display text-[30px] font-bold leading-none tracking-[-0.03em]">
-              <span className="text-gradient-warm">Sabariya</span>
-              <span className="text-gradient-cool">Tech</span>
+            <Link href="/" aria-label={`${site.name} home`} className="inline-block">
+              <Logo size={60} className="brightness-0 invert" />
             </Link>
             <p className="mt-5 max-w-[270px] text-[16px] leading-relaxed text-[#D6E2F3]/85">{site.footerLine}</p>
             <ul className="mt-8 flex gap-3">
