@@ -10,6 +10,7 @@ import { Button, LinkArrow } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
 import { cn, EASE } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 const filters: WorkFilter[] = ["All", "Education", "Travel & Tourism", "Legal Services"];
 
@@ -27,7 +28,8 @@ export function Work() {
   };
 
   return (
-    <section id="work" aria-labelledby="work-title" className="relative py-20 md:pb-32 md:pt-28">
+    <section id="work" aria-labelledby="work-title" className="relative isolate py-20 md:pb-32 md:pt-28">
+      <SectionBackdrop variant="ribbons" />
       <div className="container-x">
         <Reveal className="grid items-end gap-x-16 gap-y-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div>

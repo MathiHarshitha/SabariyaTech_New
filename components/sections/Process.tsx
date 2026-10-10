@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll, useSpring } from "framer-motion";
 import { processSteps } from "@/data/site";
@@ -9,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
 import { cn } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 // Path points line up with the step positions below (viewBox 1200 × 320).
 const PATH =
@@ -38,10 +38,7 @@ export function Process() {
 
   return (
     <section id="process" aria-labelledby="process-title" className="relative isolate overflow-hidden pb-32 pt-20 md:pb-52 md:pt-28">
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <Image src="/images/process-mist.jpg" alt="" fill sizes="100vw" className="object-cover opacity-20 saturate-[0.6]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,var(--color-canvas)_0%,rgb(247_248_250/0.7)_40%,rgb(247_248_250/0.85)_100%)]" />
-      </div>
+      <SectionBackdrop variant="mist" />
 
       <div className="container-x">
         <Reveal className="max-w-[560px]">

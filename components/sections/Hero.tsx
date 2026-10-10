@@ -17,6 +17,7 @@ import { accents } from "@/lib/accents";
 import { Button } from "@/components/ui/Button";
 import { CountUp } from "@/components/ui/CountUp";
 import { cn, EASE } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 const rise = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -292,11 +293,9 @@ export function Hero() {
       className="relative isolate overflow-hidden pb-12 pt-[112px] lg:pb-[150px] lg:pt-[clamp(100px,15svh,148px)]"
     >
       {/* ---------- backdrop: dot grid + brand glows ---------- */}
-      <div aria-hidden className="absolute inset-0 -z-10">
+      <SectionBackdrop variant="aurora">
         <div className="absolute inset-0 bg-[radial-gradient(rgb(16_33_61/0.1)_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,#000_30%,transparent_80%)]" />
-        <div className="absolute -left-40 top-10 size-[520px] rounded-full bg-brand-amber/20 blur-[120px]" />
-        <div className="absolute -right-40 top-40 size-[520px] rounded-full bg-brand-cyan/20 blur-[120px]" />
-      </div>
+      </SectionBackdrop>
 
       {/* ---------- copy ---------- */}
       <div className="container-x relative text-center">

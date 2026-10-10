@@ -7,6 +7,7 @@ import { techGroups, techStack, type TechGroup } from "@/data/site";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
 import { cn, EASE } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 const groupDot: Record<TechGroup, string> = {
   Frontend: "bg-brand-cyan",
@@ -29,7 +30,8 @@ export function TechStack() {
   const dim = (g: TechGroup) => focus !== null && focus !== g;
 
   return (
-    <section id="tech" aria-labelledby="tech-title" className="bg-navy-section relative overflow-hidden py-24 text-white md:py-32">
+    <section id="tech" aria-labelledby="tech-title" className="bg-navy-section relative isolate overflow-hidden py-24 text-white md:py-32">
+      <SectionBackdrop variant="constellation" />
       <div className="container-x relative z-[2] grid items-center gap-12 lg:grid-cols-[0.9fr_1.4fr] lg:gap-20">
         <Reveal>
           <Eyebrow light>Technologies we work with</Eyebrow>

@@ -6,6 +6,7 @@ import { ctaChecklist, projectTypes, site } from "@/data/site";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/Typography";
 import { cn } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 const MARQUEE = ["Web Platforms", "AI Agents", "Business Systems", "Cloud", "SaaS Products", "Digital Growth"];
 
@@ -46,11 +47,9 @@ export function FinalCTA() {
       <div className="container-x">
         <Reveal className="relative isolate overflow-hidden rounded-[28px] bg-navy-950 text-white shadow-[0_50px_100px_-50px_rgb(7_26_53/0.75)] md:rounded-[36px]">
           {/* light, not lines: two brand glows and a soft dot field */}
-          <div aria-hidden className="absolute inset-0 -z-10">
-            <div className="absolute -bottom-40 -left-32 size-[560px] rounded-full bg-brand-orange/25 blur-[130px]" />
-            <div className="absolute -right-32 -top-40 size-[560px] rounded-full bg-brand-blue/30 blur-[130px]" />
+          <SectionBackdrop variant="magnet">
             <div className="absolute inset-0 bg-[radial-gradient(rgb(255_255_255/0.07)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_at_center,#000_20%,transparent_75%)]" />
-          </div>
+          </SectionBackdrop>
 
           {/* kinetic word band */}
           <div aria-hidden className="overflow-hidden border-b border-white/[0.08] py-2.5 md:py-3">

@@ -2,12 +2,14 @@ import { clients } from "@/data/site";
 import { accents } from "@/lib/accents";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 export function TrustStrip() {
   return (
     <section aria-label="Clients" className="relative z-[5] mt-8 lg:-mt-[110px]">
       <div className="container-x">
-        <Reveal className="flex flex-col gap-4 rounded-[28px] bg-gradient-to-b from-white to-[#FAFBFC] p-5 shadow-[var(--shadow-clay),0_30px_60px_-30px_rgb(7_26_53/0.2)] xl:flex-row xl:items-center xl:gap-8 xl:py-5 xl:pl-8 xl:pr-5">
+        <Reveal className="relative isolate overflow-hidden flex flex-col gap-4 rounded-[28px] bg-gradient-to-b from-white to-[#FAFBFC] p-5 shadow-[var(--shadow-clay),0_30px_60px_-30px_rgb(7_26_53/0.2)] xl:flex-row xl:items-center xl:gap-8 xl:py-5 xl:pl-8 xl:pr-5">
+          <SectionBackdrop variant="sheen" />
           <p className="shrink-0 font-display text-[11.5px] font-semibold uppercase leading-relaxed tracking-[0.2em] text-muted">
             Trusted by businesses,
             <br className="hidden xl:block" /> institutes and startups

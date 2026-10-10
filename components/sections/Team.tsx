@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
 import { cn } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 export function Team() {
   return (
-    <section id="team" aria-labelledby="team-title" className="relative pb-24 pt-8 md:pb-32 md:pt-16">
+    <section id="team" aria-labelledby="team-title" className="relative isolate pb-24 pt-8 md:pb-32 md:pt-16">
+      <SectionBackdrop variant="mesh" />
       <svg width="0" height="0" aria-hidden className="absolute">
         <clipPath id="team-clip" clipPathUnits="objectBoundingBox">
           <path d="M.06,.08 C.2,.01 .4,.06 .6,.03 C.78,0 .94,.02 .98,.14 C1,.3 .97,.6 .99,.82 C1,.95 .9,1 .74,.97 C.55,.94 .35,1 .16,.97 C.03,.95 0,.84 .01,.66 C.02,.46 -.01,.2 .06,.08Z" />
