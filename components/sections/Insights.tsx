@@ -4,6 +4,7 @@ import { accents } from "@/lib/accents";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2 } from "@/components/ui/Typography";
 import { cn } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 const fmt = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 
@@ -24,7 +25,8 @@ function Meta({ date, readTime, light }: { date: string; readTime: string; light
 export function Insights() {
   const [lead, ...rest] = insights;
   return (
-    <section id="insights" aria-labelledby="insights-title" className="relative pb-24 md:pb-36">
+    <section id="insights" aria-labelledby="insights-title" className="relative isolate pb-24 md:pb-36">
+      <SectionBackdrop variant="beams" />
       <div className="container-x">
         <Reveal className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>

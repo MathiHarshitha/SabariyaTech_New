@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
 import { cn } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 export function Team() {
   return (
-    <section id="team" aria-labelledby="team-title" className="relative pb-24 pt-8 md:pb-32 md:pt-16">
+    <section id="team" aria-labelledby="team-title" className="relative isolate pb-24 pt-8 md:pb-32 md:pt-16">
+      <SectionBackdrop variant="mesh" />
       <svg width="0" height="0" aria-hidden className="absolute">
         <clipPath id="team-clip" clipPathUnits="objectBoundingBox">
           <path d="M.06,.08 C.2,.01 .4,.06 .6,.03 C.78,0 .94,.02 .98,.14 C1,.3 .97,.6 .99,.82 C1,.95 .9,1 .74,.97 C.55,.94 .35,1 .16,.97 C.03,.95 0,.84 .01,.66 C.02,.46 -.01,.2 .06,.08Z" />
@@ -43,16 +45,6 @@ export function Team() {
             />
             <div aria-hidden className="absolute inset-0 bg-[linear-gradient(200deg,transparent_40%,rgb(7_26_53/0.35))]" />
           </div>
-          <svg aria-hidden viewBox="0 0 600 400" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 hidden size-full sm:block">
-            <defs>
-              <linearGradient id="team-line" x1="0" x2="1">
-                <stop offset="0" stopColor="#11BDEB" />
-                <stop offset=".5" stopColor="#0878E8" />
-                <stop offset="1" stopColor="#FF6A00" />
-              </linearGradient>
-            </defs>
-            <path d="M-10 330 C 120 260 220 380 340 300 S 520 160 610 200" fill="none" stroke="url(#team-line)" strokeWidth={3} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-          </svg>
           <ul
             aria-label="What drives us"
             className="glass-dark relative mx-4 -mt-16 grid grid-cols-2 gap-1.5 rounded-3xl p-3.5 sm:absolute sm:right-4 sm:top-1/2 sm:m-0 sm:flex sm:min-w-[210px] sm:-translate-y-1/2 sm:flex-col lg:-right-3"

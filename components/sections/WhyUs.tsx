@@ -3,10 +3,12 @@ import { IconBadge } from "@/components/ui/IconBadge";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
 import { cn } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 export function WhyUs() {
   return (
-    <section id="about" aria-labelledby="about-title" className="relative py-24 md:py-32">
+    <section id="about" aria-labelledby="about-title" className="relative isolate py-24 md:py-32">
+      <SectionBackdrop variant="rings" />
       <div className="container-x grid items-start gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-20">
         <Reveal className="lg:sticky lg:top-32">
           <Eyebrow>Why SabariyaTech</Eyebrow>

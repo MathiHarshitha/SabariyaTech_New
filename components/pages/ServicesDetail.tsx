@@ -45,10 +45,6 @@ export function CoreServices() {
           <article key={s.id} id={s.id} aria-labelledby={`${s.id}-title`} className="grid scroll-mt-28 items-center gap-10 lg:grid-cols-2 lg:gap-20">
             <Reveal className={cn(i % 2 === 1 && "lg:order-2")}>
               <div className="bg-navy-section relative overflow-hidden rounded-[32px] p-6 sm:p-8">
-                <svg aria-hidden viewBox="0 0 400 300" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 size-full">
-                  <path d="M-10 250 C 80 200 140 280 220 210 S 340 90 410 120" fill="none" stroke="rgb(255 157 24 / 0.5)" strokeWidth={2} vectorEffect="non-scaling-stroke" />
-                  <path d="M-10 268 C 90 220 150 296 232 226 S 350 108 410 138" fill="none" stroke="rgb(17 189 235 / 0.4)" strokeWidth={1.5} vectorEffect="non-scaling-stroke" />
-                </svg>
                 <div className="relative flex items-center justify-between">
                   <IconBadge icon={s.icon} accent={s.accent} className="size-16 rounded-[20px]" />
                   <span aria-hidden className="font-display text-[64px] font-extrabold leading-none tracking-[-0.05em] text-white/[0.08]">0{i + 1}</span>

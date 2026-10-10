@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { cn, EASE } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 const rise = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -37,11 +38,9 @@ export function PageHero({
 }) {
   return (
     <section aria-labelledby={id} className="relative isolate overflow-hidden pb-16 pt-[120px] md:pb-24 lg:pt-[150px]">
-      <div aria-hidden className="absolute inset-0 -z-10">
+      <SectionBackdrop variant="aurora">
         <div className="absolute inset-0 bg-[radial-gradient(rgb(16_33_61/0.1)_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_70%_60%_at_30%_0%,#000_30%,transparent_80%)]" />
-        <div className="absolute -left-40 top-0 size-[480px] rounded-full bg-brand-amber/20 blur-[120px]" />
-        <div className="absolute -right-40 top-32 size-[480px] rounded-full bg-brand-cyan/20 blur-[120px]" />
-      </div>
+      </SectionBackdrop>
 
       <div className={cn("container-x grid items-center gap-12", aside && "lg:grid-cols-[1.05fr_0.95fr] lg:gap-16")}>
         <div className={cn(!aside && "max-w-[860px]")}>
@@ -101,10 +100,6 @@ export function PageHero({
 
       {children}
 
-      <svg aria-hidden viewBox="0 0 1440 60" preserveAspectRatio="none" className="pointer-events-none absolute inset-x-0 bottom-0 h-[40px] w-full">
-        <path className="fill-none stroke-brand-blue/30" strokeWidth={2} vectorEffect="non-scaling-stroke" d="M0 30 C 240 58 480 58 720 34 C 960 10 1200 6 1440 26" />
-        <path className="fill-none stroke-brand-orange/30" strokeWidth={2} strokeDasharray="2 8" vectorEffect="non-scaling-stroke" d="M0 40 C 260 66 500 64 740 42 C 980 20 1210 16 1440 36" />
-      </svg>
     </section>
   );
 }
