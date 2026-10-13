@@ -8,7 +8,7 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "SabariyaTechWeb, AI & Software Development Services",
+  title: "SabariyaTech Web, AI & Software Development Services",
   description:
     "Custom web platforms, AI automation, ERP, SaaS and backend infrastructure services from SabariyaTech in Vijayawada. End-to-end technology services built for real business growth.",
   alternates: { canonical: "/services" },

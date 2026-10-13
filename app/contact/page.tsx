@@ -142,7 +142,8 @@ export default function ContactPage() {
                   title={`Map showing ${site.name} at Benz Circle, Vijayawada`}
                   src="https://maps.google.com/maps?q=Benz%20Circle%2C%20Vijayawada&z=15&output=embed"
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+                  referrerPolicy="strict-origin"
+                  sandbox="allow-scripts allow-same-origin"
                   className="absolute inset-0 size-full border-0"
                 />
               </div>
