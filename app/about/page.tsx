@@ -7,15 +7,44 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About | Technology Company in Vijayawada",
   description:
-    "SabariyaTech is a Vijayawada-based technology company building secure, scalable and performance-driven digital systems — inspired by the steady flow of the Sabari River.",
+    "SabariyaTech is a Vijayawada-based software company building secure, scalable web platforms, AI systems and business software for long-term growth — inspired by the Sabari River.",
   alternates: { canonical: "/about" },
+  keywords: [
+    "about SabariyaTech",
+    "technology company Vijayawada",
+    "software company Andhra Pradesh",
+    "IT company Vijayawada",
+    "web development team Vijayawada",
+  ],
+  openGraph: {
+    title: "About SabariyaTech | Technology Company in Vijayawada",
+    description:
+      "SabariyaTech is a Vijayawada-based software company building secure, scalable web platforms, AI systems and business software for long-term growth.",
+    url: "/about",
+  },
+  twitter: {
+    title: "About SabariyaTech | Technology Company in Vijayawada",
+    description:
+      "SabariyaTech is a Vijayawada-based software company building secure, scalable web platforms, AI systems and business software for long-term growth.",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://sabariyatech.in" },
+    { "@type": "ListItem", position: 2, name: "About", item: "https://sabariyatech.in/about" },
+  ],
 };
 
 export default function AboutPage() {
   return (
-    <PageShell>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <PageShell>
       <PageHero
         crumbs={[{ label: "About" }]}
         title={
@@ -42,5 +71,6 @@ export default function AboutPage() {
       <TeamStrip />
       <FinalCTA />
     </PageShell>
+    </>
   );
 }

@@ -6,14 +6,44 @@ import { CareersBand } from "@/components/pages/CareersBand";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Team",
-  description: "Meet the SabariyaTech team — engineers, AI/ML specialists, data scientists, SEO and video experts based in Vijayawada.",
+  title: "Meet SabariyaTech Development Team in Vijayawada",
+  description:
+    "Meet the SabariyaTech team — web developers, AI/ML engineers, data scientists, SEO specialists and video editors based in Vijayawada, Andhra Pradesh.",
   alternates: { canonical: "/team" },
+  keywords: [
+    "SabariyaTech team",
+    "software developers Vijayawada",
+    "AI engineers Vijayawada",
+    "web development team Andhra Pradesh",
+    "tech team India",
+  ],
+  openGraph: {
+    title: "Meet Our Development Team in Vijayawada | SabariyaTech",
+    description:
+      "Web developers, AI/ML engineers, data scientists, SEO specialists and video editors — the SabariyaTech team based in Vijayawada, Andhra Pradesh.",
+    url: "/team",
+  },
+  twitter: {
+    title: "Meet Our Development Team in Vijayawada | SabariyaTech",
+    description:
+      "Web developers, AI/ML engineers, data scientists, SEO specialists and video editors — the SabariyaTech team based in Vijayawada, Andhra Pradesh.",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://sabariyatech.in" },
+    { "@type": "ListItem", position: 2, name: "Team", item: "https://sabariyatech.in/team" },
+  ],
 };
 
 export default function TeamPage() {
   return (
-    <PageShell>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <PageShell>
       <PageHero
         crumbs={[{ label: "Team" }]}
         title={
@@ -38,5 +68,6 @@ export default function TeamPage() {
       <TeamValues />
       <CareersBand />
     </PageShell>
+    </>
   );
 }

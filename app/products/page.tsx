@@ -6,14 +6,45 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Products",
-  description: "Explore the live LMS Portal and restaurant billing software in development by SabariyaTech.",
+  title: "Software Product Development & SaaS Products | SabariyaTech",
+  description:
+    "Explore SabariyaTech's live LMS Portal for institutes and restaurant billing software in development. Purpose-built tools that solve real problems for real businesses.",
   alternates: { canonical: "/products" },
+  keywords: [
+    "LMS portal India",
+    "learning management system for institutes",
+    "restaurant billing software",
+    "SaaS products India",
+    "SabariyaTech products",
+    "education software Vijayawada",
+  ],
+  openGraph: {
+    title: "LMS Portal & Software Products | SabariyaTech",
+    description:
+      "Explore SabariyaTech's live LMS Portal for institutes and restaurant billing software in development. Purpose-built tools that solve real problems.",
+    url: "/products",
+  },
+  twitter: {
+    title: "LMS Portal & Software Products | SabariyaTech",
+    description:
+      "Explore SabariyaTech's live LMS Portal for institutes and restaurant billing software in development. Purpose-built tools that solve real problems.",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://sabariyatech.in" },
+    { "@type": "ListItem", position: 2, name: "Products", item: "https://sabariyatech.in/products" },
+  ],
 };
 
 export default function ProductsPage() {
   return (
-    <PageShell>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <PageShell>
       <PageHero
         crumbs={[{ label: "Products" }]}
         title={
@@ -37,5 +68,6 @@ export default function ProductsPage() {
       <ProductCatalog />
       <FinalCTA />
     </PageShell>
+    </>
   );
 }

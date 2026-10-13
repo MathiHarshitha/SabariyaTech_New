@@ -4,8 +4,17 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
-  description: "Read the terms governing access to and use of SabariyaTech's website, software products, and services.",
+  description: "Read the terms governing access to and use of SabariyaTech's website, software products and services. Governed by Indian law.",
   alternates: { canonical: "/terms-and-conditions" },
+  openGraph: {
+    title: "Terms & Conditions | SabariyaTech",
+    description: "Read the terms governing access to and use of SabariyaTech's website, software products and services. Governed by Indian law.",
+    url: "/terms-and-conditions",
+  },
+  twitter: {
+    title: "Terms & Conditions | SabariyaTech",
+    description: "Read the terms governing access to and use of SabariyaTech's website, software products and services. Governed by Indian law.",
+  },
 };
 
 const sections = [

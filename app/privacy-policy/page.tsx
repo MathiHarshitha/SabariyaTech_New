@@ -4,8 +4,17 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Learn how SabariyaTech collects, uses, stores, discloses, and protects personal information.",
+  description: "Learn how SabariyaTech collects, uses, stores, discloses and protects personal information when you use our website, products and services.",
   alternates: { canonical: "/privacy-policy" },
+  openGraph: {
+    title: "Privacy Policy | SabariyaTech",
+    description: "Learn how SabariyaTech collects, uses, stores, discloses and protects personal information when you use our website, products and services.",
+    url: "/privacy-policy",
+  },
+  twitter: {
+    title: "Privacy Policy | SabariyaTech",
+    description: "Learn how SabariyaTech collects, uses, stores, discloses and protects personal information when you use our website, products and services.",
+  },
 };
 
 const sections = [

@@ -10,35 +10,39 @@ const caveat = Caveat({ subsets: ["latin"], weight: ["600"], variable: "--font-c
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Turning ideas into impactful technology`,
+    default: `${site.name} — Software Development Company in Vijayawada`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
   applicationName: site.name,
   keywords: [
     "SabariyaTech",
-    "software development",
-    "web development",
-    "AI automation",
-    "ERP",
-    "CRM",
-    "SaaS",
+    "software development company Vijayawada",
+    "web development company Vijayawada",
+    "IT company Vijayawada",
+    "custom software development",
+    "web application development",
+    "AI development company",
+    "ERP software development",
+    "CRM development",
+    "SaaS development",
+    "technology company Andhra Pradesh",
     "LMS Portal",
-    "Restaurant Billing Software",
+    "restaurant billing software",
   ],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
     siteName: site.name,
-    title: `${site.name} — Turning ideas into impactful technology`,
+    title: `${site.name} — Software Development Company in Vijayawada`,
     description: site.description,
-    images: [{ url: "/images/hero-mountains.jpg", width: 2000, height: 1333, alt: "Mountains at sunrise above the clouds" }],
+    images: [{ url: "/images/hero-mountains.jpg", width: 2000, height: 1333, alt: "SabariyaTech — Software Development Company in Vijayawada" }],
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Turning ideas into impactful technology`,
+    title: `${site.name} — Software Development Company in Vijayawada`,
     description: site.description,
     images: ["/images/hero-mountains.jpg"],
   },
@@ -51,15 +55,46 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const jsonLd = {
+const organizationLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "LocalBusiness"],
   name: site.name,
   url: site.url,
   email: site.email,
   telephone: site.phone,
-  address: { "@type": "PostalAddress", streetAddress: "Benz Circle", addressLocality: "Vijayawada", addressRegion: "Andhra Pradesh", addressCountry: "IN" },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Benz Circle",
+    addressLocality: "Vijayawada",
+    addressRegion: "Andhra Pradesh",
+    postalCode: "520010",
+    addressCountry: "IN",
+  },
   logo: `${site.url}/Logo.svg`,
+  image: `${site.url}/images/hero-mountains.jpg`,
+  description: site.description,
+  areaServed: [
+    { "@type": "City", name: "Vijayawada" },
+    { "@type": "State", name: "Andhra Pradesh" },
+    { "@type": "Country", name: "India" },
+  ],
+  knowsAbout: [
+    "Web Application Development",
+    "Custom Software Development",
+    "AI Development",
+    "Machine Learning",
+    "ERP Software",
+    "SaaS Development",
+    "Search Engine Optimization",
+    "Cloud Infrastructure",
+  ],
+};
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.name,
+  url: site.url,
   description: site.description,
 };
 
@@ -74,7 +109,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         <MotionProvider>{children}</MotionProvider>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }} />
       </body>
     </html>
   );

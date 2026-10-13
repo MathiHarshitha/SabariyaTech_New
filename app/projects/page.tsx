@@ -7,17 +7,47 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: "SabariyaTech Software Portfolio & Client Projects",
   description:
-    "Client websites and platforms built by SabariyaTech for tourism, education, legal, healthcare, hospitality, real estate and e-commerce.",
+    "13 client websites and platforms built by SabariyaTech across tourism, education, legal, healthcare, hospitality, real estate and e-commerce. See our live work.",
   alternates: { canonical: "/projects" },
+  keywords: [
+    "web development portfolio Vijayawada",
+    "software projects portfolio",
+    "client projects SabariyaTech",
+    "website development case studies",
+    "web development Andhra Pradesh",
+    "software company portfolio India",
+  ],
+  openGraph: {
+    title: "Software Portfolio & Client Projects | SabariyaTech",
+    description:
+      "13 client websites and platforms built across tourism, education, legal, healthcare, hospitality, real estate and e-commerce. See our live work.",
+    url: "/projects",
+  },
+  twitter: {
+    title: "Software Portfolio & Client Projects | SabariyaTech",
+    description:
+      "13 client websites and platforms built across tourism, education, legal, healthcare, hospitality, real estate and e-commerce. See our live work.",
+  },
 };
 
 const industries = new Set(portfolio.map((p) => p.sector)).size;
 
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://sabariyatech.in" },
+    { "@type": "ListItem", position: 2, name: "Projects", item: "https://sabariyatech.in/projects" },
+  ],
+};
+
 export default function ProjectsPage() {
   return (
-    <PageShell>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <PageShell>
       <PageHero
         crumbs={[{ label: "Projects" }]}
         title={
@@ -61,5 +91,6 @@ export default function ProjectsPage() {
       <ProjectsGrid />
       <FinalCTA />
     </PageShell>
+    </>
   );
 }

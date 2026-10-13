@@ -6,14 +6,45 @@ import { Culture, HiringCard, HiringProcess, Openings } from "@/components/pages
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Careers",
-  description: "Join SabariyaTech in Vijayawada. See open roles, our culture and a simple four-step hiring process.",
+  title: "Tech Jobs & Careers in Vijayawada",
+  description:
+    "Join SabariyaTech in Vijayawada. We're hiring for tech and digital marketing roles. Explore open positions, our engineering culture and our simple four-step hiring process.",
   alternates: { canonical: "/careers" },
+  keywords: [
+    "tech jobs Vijayawada",
+    "software developer jobs Vijayawada",
+    "digital marketing jobs Vijayawada",
+    "IT careers Andhra Pradesh",
+    "SabariyaTech careers",
+    "software company jobs Vijayawada",
+  ],
+  openGraph: {
+    title: "Tech Jobs & Careers in Vijayawada | SabariyaTech",
+    description:
+      "Join SabariyaTech in Vijayawada. We're hiring for tech and digital marketing roles. Explore open positions and our engineering culture.",
+    url: "/careers",
+  },
+  twitter: {
+    title: "Tech Jobs & Careers in Vijayawada | SabariyaTech",
+    description:
+      "Join SabariyaTech in Vijayawada. We're hiring for tech and digital marketing roles. Explore open positions and our engineering culture.",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://sabariyatech.in" },
+    { "@type": "ListItem", position: 2, name: "Careers", item: "https://sabariyatech.in/careers" },
+  ],
 };
 
 export default function CareersPage() {
   return (
-    <PageShell>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <PageShell>
       <PageHero
         crumbs={[{ label: "Careers" }]}
         title={
@@ -38,5 +69,6 @@ export default function CareersPage() {
       <Openings />
       <HiringProcess />
     </PageShell>
+    </>
   );
 }

@@ -26,10 +26,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const m = team.find((t) => t.slug === slug);
   if (!m) return {};
   return {
-    title: `${m.name} — ${m.role}`,
-    description: m.short,
+    title: `${m.name} | ${m.role}`,
+    description: `${m.name} is a ${m.role} at SabariyaTech in Vijayawada. ${m.short}`,
     alternates: { canonical: `/team/${m.slug}` },
-    openGraph: { images: [{ url: m.image, alt: `Portrait of ${m.name}` }] },
+    keywords: [m.name, m.role, "SabariyaTech team", "Vijayawada", ...m.tags],
+    openGraph: {
+      title: `${m.name} | ${m.role} at SabariyaTech`,
+      description: `${m.name} is a ${m.role} at SabariyaTech in Vijayawada. ${m.short}`,
+      url: `/team/${m.slug}`,
+      images: [{ url: m.image, alt: `Portrait of ${m.name}` }],
+    },
+    twitter: {
+      title: `${m.name} | ${m.role} at SabariyaTech`,
+      description: `${m.name} is a ${m.role} at SabariyaTech in Vijayawada. ${m.short}`,
+      images: [m.image],
+    },
   };
 }
 
@@ -42,8 +53,33 @@ export default async function MemberPage({ params }: Props) {
   const others = team.filter((t) => t.slug !== m.slug).slice(0, 3);
   const [first, ...last] = m.name.split(" ");
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://sabariyatech.in" },
+      { "@type": "ListItem", position: 2, name: "Team", item: "https://sabariyatech.in/team" },
+      { "@type": "ListItem", position: 3, name: m.name, item: `https://sabariyatech.in/team/${m.slug}` },
+    ],
+  };
+
+  const personLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: m.name,
+    jobTitle: m.role,
+    worksFor: { "@type": "Organization", name: "SabariyaTech", url: "https://sabariyatech.in" },
+    image: `https://sabariyatech.in${m.image}`,
+    url: `https://sabariyatech.in/team/${m.slug}`,
+    knowsAbout: m.skills,
+    ...(m.linkedin ? { sameAs: [m.linkedin] } : {}),
+  };
+
   return (
-    <PageShell>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }} />
+      <PageShell>
       <PageHero
         crumbs={[{ label: "Team", href: "/team" }, { label: m.name }]}
         title={
@@ -163,5 +199,6 @@ export default async function MemberPage({ params }: Props) {
 
       <CareersBand />
     </PageShell>
+    </>
   );
 }

@@ -8,15 +8,48 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "SabariyaTechWeb, AI & Software Development Services",
   description:
-    "Web platform development, AI systems & automation, scalable backend infrastructure, app development, SEO and cloud — end-to-end services from SabariyaTech.",
+    "Custom web platforms, AI automation, ERP, SaaS and backend infrastructure services from SabariyaTech in Vijayawada. End-to-end technology services built for real business growth.",
   alternates: { canonical: "/services" },
+  keywords: [
+    "software development services Vijayawada",
+    "web development services Vijayawada",
+    "AI development services",
+    "custom web application development",
+    "ERP software development",
+    "SaaS development company",
+    "SEO services Vijayawada",
+    "cloud infrastructure services",
+    "backend development services",
+  ],
+  openGraph: {
+    title: "Web, AI & Software Development Services | SabariyaTech",
+    description:
+      "Custom web platforms, AI automation, ERP, SaaS and backend infrastructure services from SabariyaTech in Vijayawada. Built for real business growth.",
+    url: "/services",
+  },
+  twitter: {
+    title: "Web, AI & Software Development Services | SabariyaTech",
+    description:
+      "Custom web platforms, AI automation, ERP, SaaS and backend infrastructure services from SabariyaTech in Vijayawada. Built for real business growth.",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://sabariyatech.in" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://sabariyatech.in/services" },
+  ],
 };
 
 export default function ServicesPage() {
   return (
-    <PageShell>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <PageShell>
       <PageHero
         crumbs={[{ label: "Services" }]}
         title={
@@ -43,5 +76,6 @@ export default function ServicesPage() {
       <Process />
       <FinalCTA />
     </PageShell>
+    </>
   );
 }

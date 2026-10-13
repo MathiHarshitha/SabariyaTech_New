@@ -10,9 +10,26 @@ import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
 import { accents, type Accent } from "@/lib/accents";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: `Talk to SabariyaTech about your project. Call ${site.phone}, email ${site.email} or visit us at Benz Circle, Vijayawada.`,
+  title: "Contact | Software Company Vijayawada",
+  description: `Talk to SabariyaTech about your project. Call ${site.phone}, email ${site.email} or fill our brief form. Based at Benz Circle, Vijayawada, Andhra Pradesh.`,
   alternates: { canonical: "/contact" },
+  keywords: [
+    "contact SabariyaTech",
+    "software company Vijayawada contact",
+    "web development inquiry Vijayawada",
+    "get software quote Vijayawada",
+    "hire developers Vijayawada",
+    "IT company Benz Circle Vijayawada",
+  ],
+  openGraph: {
+    title: "Contact SabariyaTech | Software Company Vijayawada",
+    description: `Talk to SabariyaTech about your project. Call ${site.phone}, email ${site.email} or fill our brief form. Based at Benz Circle, Vijayawada.`,
+    url: "/contact",
+  },
+  twitter: {
+    title: "Contact SabariyaTech | Software Company Vijayawada",
+    description: `Talk to SabariyaTech about your project. Call ${site.phone}, email ${site.email} or fill our brief form. Based at Benz Circle, Vijayawada.`,
+  },
 };
 
 const channels: { label: string; value: string; note: string; href: string; icon: typeof Phone; accent: Accent; external?: boolean }[] = [
@@ -35,9 +52,20 @@ const nextSteps = [
   { title: "A clear proposal", body: "You get a plan with milestones and costs before any work begins." },
 ];
 
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://sabariyatech.in" },
+    { "@type": "ListItem", position: 2, name: "Contact", item: "https://sabariyatech.in/contact" },
+  ],
+};
+
 export default function ContactPage() {
   return (
-    <PageShell>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <PageShell>
       <PageHero
         crumbs={[{ label: "Contact" }]}
         title={
@@ -126,5 +154,6 @@ export default function ContactPage() {
         </div>
       </section>
     </PageShell>
+    </>
   );
 }
