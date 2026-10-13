@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { site } from "@/data/site";
 import { team } from "@/data/pages";
 
-const pages = ["", "/about", "/services", "/products", "/projects", "/team", "/careers", "/contact"];
+const pages = ["", "/about", "/services", "/products", "/projects", "/team", "/careers", "/contact", "/privacy-policy", "/terms-and-conditions"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

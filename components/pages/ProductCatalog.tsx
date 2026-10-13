@@ -5,13 +5,11 @@ import { accents } from "@/lib/accents";
 import { Button } from "@/components/ui/Button";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { Reveal } from "@/components/ui/Reveal";
-import { AIEditorMockup, ComingSoonMockup, InstitutePortalMockup, LinkFixMockup } from "@/components/products/Mockups";
+import { ComingSoonMockup, LMSPortalMockup } from "@/components/products/Mockups";
 import { cn } from "@/lib/utils";
 
 function Mockup({ id }: { id: CatalogId }) {
-  if (id === "institute-portal") return <InstitutePortalMockup />;
-  if (id === "linkfix") return <LinkFixMockup />;
-  if (id === "ai-editor") return <AIEditorMockup />;
+  if (id === "lms-portal") return <LMSPortalMockup />;
   return <ComingSoonMockup />;
 }
 
@@ -34,7 +32,7 @@ export function CatalogTiles() {
               <small
                 className={cn(
                   "mt-1.5 inline-block rounded-full px-2 py-0.5 text-[10.5px] font-semibold",
-                  p.status === "Available" ? "bg-[#DDF6EC] text-[#0E8A5F]" : "bg-brand-amber/15 text-[#C26A00]",
+                  p.status === "Live · in use" ? "bg-[#DDF6EC] text-[#0E8A5F]" : "bg-brand-amber/15 text-[#C26A00]",
                 )}
               >
                 {p.status}
@@ -74,12 +72,12 @@ export function ProductCatalog() {
                 <span
                   className={cn(
                     "rounded-full px-2.5 py-1 text-[11px] font-semibold",
-                    p.status === "Available" ? "bg-[#DDF6EC] text-[#0E8A5F]" : "bg-brand-amber/15 text-[#C26A00]",
+                    p.status === "Live · in use" ? "bg-[#DDF6EC] text-[#0E8A5F]" : "bg-brand-amber/15 text-[#C26A00]",
                   )}
                 >
                   {p.status}
                 </span>
-                {p.id === "institute-portal" && (
+                {p.id === "lms-portal" && (
                   <span className="rounded-full bg-navy-900 px-2.5 py-1 text-[11px] font-semibold text-white">New</span>
                 )}
                 <span aria-hidden className="ml-auto font-display text-[44px] font-bold leading-none tracking-[-0.04em] text-ink/[0.07]">
@@ -105,13 +103,15 @@ export function ProductCatalog() {
                 <b className="font-display font-semibold text-navy-900">Built for</b> · {p.audience}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                {p.status === "Available" ? (
+                {p.url ? (
                   <>
-                    <Button href={mail(`${p.name} demo request`)}>Request a demo</Button>
+                    <Button href={p.url} target="_blank" rel="noopener noreferrer">Visit LMS Portal</Button>
                     <Button href="/contact" variant="soft">
                       Talk to us
                     </Button>
                   </>
+                ) : p.status === "In development" ? (
+                  <Button href="/contact">Discuss this product</Button>
                 ) : (
                   <Button href={mail("Notify me about new SabariyaTech products")}>Get notified</Button>
                 )}

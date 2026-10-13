@@ -2,26 +2,29 @@
 
 import { useRef, useState, type KeyboardEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Box, Check, Link2, PenLine, type LucideIcon } from "lucide-react";
+import { Box, Check, GraduationCap, Receipt, type LucideIcon } from "lucide-react";
 import { products, site, type ProductId } from "@/data/site";
 import { accents } from "@/lib/accents";
 import { Button } from "@/components/ui/Button";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
-import { AIEditorMockup, ComingSoonMockup, LinkFixMockup } from "@/components/products/Mockups";
+import { ComingSoonMockup, LMSPortalMockup } from "@/components/products/Mockups";
 import { cn, EASE } from "@/lib/utils";
 import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
-const icons: Record<ProductId, LucideIcon> = { linkfix: Link2, "ai-editor": PenLine, more: Box };
+const icons: Record<ProductId, LucideIcon> = {
+  "lms-portal": GraduationCap,
+  "restaurant-billing": Receipt,
+  more: Box,
+};
 function ProductMockup({ id }: { id: ProductId }) {
-  if (id === "linkfix") return <LinkFixMockup />;
-  if (id === "ai-editor") return <AIEditorMockup />;
+  if (id === "lms-portal") return <LMSPortalMockup />;
   return <ComingSoonMockup />;
 }
 
 export function Products() {
-  const [activeId, setActiveId] = useState<ProductId>("linkfix");
+  const [activeId, setActiveId] = useState<ProductId>("lms-portal");
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const active = products.find((p) => p.id === activeId) ?? products[0];
 
@@ -101,7 +104,7 @@ export function Products() {
                       <span
                         className={cn(
                           "rounded-full px-2 py-0.5 text-[10px] font-semibold",
-                          p.status === "Available" ? "bg-[#DDF6EC] text-[#0E8A5F]" : "bg-brand-amber/20 text-brand-amber",
+                          p.status === "Live · in use" ? "bg-[#DDF6EC] text-[#0E8A5F]" : "bg-brand-amber/20 text-brand-amber",
                         )}
                       >
                         {p.status}
@@ -155,16 +158,18 @@ export function Products() {
                   </ul>
                 </div>
                 <Button
-                  href={
+                  href={active.url ?? (
                     active.id === "more"
                       ? `mailto:${site.email}?subject=${encodeURIComponent("Notify me about new SabariyaTech products")}`
                       : `mailto:${site.email}?subject=${encodeURIComponent(`${active.name} enquiry`)}`
-                  }
+                  )}
+                  target={active.url ? "_blank" : undefined}
+                  rel={active.url ? "noopener noreferrer" : undefined}
                   variant="glass"
                   size="sm"
                   className="self-start sm:self-auto"
                 >
-                  {active.id === "more" ? "Get notified" : `Ask about ${active.name}`}
+                  {active.url ? "Visit LMS Portal" : active.id === "more" ? "Get notified" : `Ask about ${active.name}`}
                 </Button>
               </motion.div>
             </AnimatePresence>

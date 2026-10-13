@@ -10,7 +10,6 @@ import { TechStack } from "@/components/sections/TechStack";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { Team } from "@/components/sections/Team";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { Insights } from "@/components/sections/Insights";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export default function Home() {
@@ -28,7 +27,6 @@ export default function Home() {
         <WhyUs />
         <Team />
         <Testimonials />
-        <Insights />
         <FinalCTA />
       </main>
       <Footer />

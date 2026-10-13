@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Products",
-  description: "Institute Portal, LinkFix, AI Editor and more — software products by SabariyaTech that make work simpler for institutes, businesses and teams.",
+  description: "Explore the live LMS Portal and restaurant billing software in development by SabariyaTech.",
   alternates: { canonical: "/products" },
 };
 
@@ -21,7 +21,7 @@ export default function ProductsPage() {
             Tools that make work <Swoosh>simpler.</Swoosh>
           </>
         }
-        lead="We build our own products to solve real problems we see again and again — from running an institute to keeping a website healthy and writing better content."
+        lead="We build products around real workflows, including a live learning platform used by institutes and restaurant billing software in development."
         actions={
           <>
             <Button href="#catalog" size="lg">

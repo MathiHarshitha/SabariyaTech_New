@@ -92,18 +92,15 @@ export function ProjectsGrid() {
                   transition={{ duration: 0.45, ease: EASE }}
                 >
                   <article className="group flex h-full flex-col overflow-hidden rounded-[28px] bg-white shadow-soft transition-all duration-500 ease-premium hover:-translate-y-1.5 hover:shadow-lift">
-                    <div className="relative mx-2 mt-2 aspect-[16/10] overflow-hidden rounded-[22px] bg-navy-900">
+                    <div className="relative mx-2 mt-2 aspect-[16/10] overflow-hidden rounded-[22px] bg-white">
                       {p.image ? (
-                        <>
-                          <Image
-                            src={p.image}
-                            alt=""
-                            fill
-                            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                            className="object-cover transition-transform duration-700 ease-premium group-hover:scale-[1.04]"
-                          />
-                          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,rgb(7_26_53/0.55))]" />
-                        </>
+                        <Image
+                          src={p.image}
+                          alt={`${p.title} logo`}
+                          fill
+                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                          className="object-contain p-7 transition-transform duration-700 ease-premium group-hover:scale-[1.04]"
+                        />
                       ) : (
                         <div aria-hidden className="bg-navy-section absolute inset-0">
                           <span
@@ -119,10 +116,16 @@ export function ProjectsGrid() {
                           </span>
                         </div>
                       )}
-                      <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 font-mono text-[11px] text-navy-700 backdrop-blur">
-                        <span className="size-1.5 rounded-full bg-emerald-500" />
-                        {host(p.url)}
-                      </span>
+                      {p.url ? (
+                        <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 font-mono text-[11px] text-navy-700 backdrop-blur">
+                          <span className="size-1.5 rounded-full bg-emerald-500" />
+                          {host(p.url)}
+                        </span>
+                      ) : (
+                        <span className="absolute left-3 top-3 rounded-full bg-brand-amber/15 px-2.5 py-1 font-display text-[11px] font-semibold text-[#C26A00]">
+                          {p.status}
+                        </span>
+                      )}
                       <span className={cn("absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-gradient-to-br px-3 py-1 font-display text-[11.5px] font-semibold text-white", accents[p.accent].badge)}>
                         <Icon aria-hidden className="size-3.5" />
                         {p.sector}
@@ -138,16 +141,18 @@ export function ProjectsGrid() {
                           </li>
                         ))}
                       </ul>
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/link mt-auto inline-flex items-center gap-2 self-start font-display text-sm font-semibold text-navy-900"
-                      >
-                        Visit live site
-                        <span className="sr-only">(opens in a new tab)</span>
-                        <ArrowUpRight aria-hidden className="size-4 text-brand-orange transition-transform duration-300 ease-premium group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-                      </a>
+                      {p.url && (
+                        <a
+                          href={p.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/link mt-auto inline-flex items-center gap-2 self-start font-display text-sm font-semibold text-navy-900"
+                        >
+                          Visit live site
+                          <span className="sr-only">(opens in a new tab)</span>
+                          <ArrowUpRight aria-hidden className="size-4 text-brand-orange transition-transform duration-300 ease-premium group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+                        </a>
+                      )}
                     </div>
                   </article>
                 </motion.li>

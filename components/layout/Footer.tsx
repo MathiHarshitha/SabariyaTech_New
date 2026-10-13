@@ -17,7 +17,7 @@ export function Footer() {
   const contact = [
     { icon: PhoneCall, label: site.phone, href: site.phoneHref },
     { icon: Mail, label: site.email, href: `mailto:${site.email}` },
-    { icon: MapPin, label: "Benz Circle, Vijayawada, Andhra Pradesh, India" },
+    { icon: MapPin, label: "Vijayawada, Andhra Pradesh, India" },
   ];
 
   return (
@@ -48,7 +48,7 @@ export function Footer() {
           {/* brand */}
           <div className="mb-10 md:col-span-3 lg:col-span-1 lg:mb-0">
             <Link href="/" aria-label={`${site.name} home`} className="inline-block">
-              <Logo size={60} className="brightness-0 invert" />
+              <Logo size={60} className="!filter-none" />
             </Link>
             <p className="mt-5 max-w-[270px] text-[16px] leading-relaxed text-[#D6E2F3]/85">{site.footerLine}</p>
             <ul className="mt-8 flex gap-3">
@@ -139,15 +139,14 @@ export function Footer() {
 
         <div className="flex flex-col justify-between gap-4 border-t border-white/[0.14] pt-7 text-[14px] md:flex-row md:items-center">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-          {/* TODO: link to real Privacy Policy and Terms pages once written */}
           <nav aria-label="Legal" className="flex items-center gap-5">
-            <span>Privacy Policy</span>
+            <Link href="/privacy-policy" className="transition-colors hover:text-brand-amber">
+              Privacy Policy
+            </Link>
             <span aria-hidden className="h-4 w-px bg-white/40" />
-            <span>Terms</span>
-            <span aria-hidden className="h-4 w-px bg-white/40" />
-            <a href="/sitemap.xml" className="transition-colors hover:text-brand-amber">
-              Sitemap
-            </a>
+            <Link href="/terms-and-conditions" className="transition-colors hover:text-brand-amber">
+              Terms
+            </Link>
           </nav>
         </div>
       </div>

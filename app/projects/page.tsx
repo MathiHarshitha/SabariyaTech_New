@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { portfolio, team } from "@/data/pages";
+import { liveProjectCount, portfolio, team } from "@/data/pages";
 import { PageShell } from "@/components/layout/PageShell";
 import { PageHero, StatRow, Swoosh } from "@/components/pages/PageHero";
 import { ProjectsGrid } from "@/components/pages/ProjectsGrid";
@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/Button";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Live websites and platforms built by SabariyaTech for tourism, education, legal, healthcare, hospitality, real estate and e-commerce clients.",
+    "Client websites and platforms built by SabariyaTech for tourism, education, legal, healthcare, hospitality, real estate and e-commerce.",
   alternates: { canonical: "/projects" },
 };
 
@@ -25,7 +25,7 @@ export default function ProjectsPage() {
             Real projects. Real <Swoosh>results.</Swoosh>
           </>
         }
-        lead="We work with businesses, institutes and startups across industries. Every project below is live — click through and see it for yourself."
+        lead="We work with businesses, institutes and startups across industries. Explore our live work and projects currently in development."
         actions={
           <>
             <Button href="/contact" size="lg">
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
             <StatRow
               light
               stats={[
-                { value: `${portfolio.length}`, label: "Live client projects" },
+                { value: `${liveProjectCount}`, label: "Live client projects" },
                 { value: `${industries}`, label: "Industries served" },
                 { value: `${team.length}`, label: "Specialists on the team" },
               ]}

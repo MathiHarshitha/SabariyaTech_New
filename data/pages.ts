@@ -8,11 +8,10 @@ import {
   Gauge,
   GraduationCap,
   HeartHandshake,
-  Link2,
   Megaphone,
   Monitor,
-  PenLine,
   Search,
+  Receipt,
   Server,
   ShieldCheck,
   Smartphone,
@@ -96,7 +95,7 @@ export const supportServices: { title: string; icon: LucideIcon }[] = [
 /* ---------------------------------------------------------
    Products
    --------------------------------------------------------- */
-export type CatalogId = "linkfix" | "ai-editor" | "institute-portal" | "more";
+export type CatalogId = "lms-portal" | "restaurant-billing" | "more";
 
 export const catalog: {
   id: CatalogId;
@@ -107,51 +106,38 @@ export const catalog: {
   audience: string;
   icon: LucideIcon;
   accent: Accent;
-  status: "Available" | "Coming soon";
+  status: "Live · in use" | "In development" | "Coming soon";
+  url?: string;
 }[] = [
   {
-    id: "institute-portal",
-    name: "Institute Portal",
-    tagline: "One portal to run your school, college or training institute.",
+    id: "lms-portal",
+    name: "LMS Portal",
+    tagline: "A live learning platform built for institutes.",
     description:
-      "Admissions, students, staff, attendance, fees, exams and online learning — together in a single, secure portal with separate logins for admins, faculty, students and parents.",
+      "We developed and deployed this portal to support structured learning, course management, student progress tracking, quizzes and coding practice. Its learning workflows are actively used by institutes.",
     features: [
-      "Online admissions & enquiries",
-      "Student & staff records",
-      "Attendance & timetables",
-      "Fee collection & receipts",
-      "Exams, results & certificates",
-      "Courses, quizzes & study material",
+      "Structured course delivery",
+      "Course management",
+      "Student progress tracking",
+      "Quizzes & coding practice",
     ],
-    audience: "Schools · Colleges · Coaching & training institutes",
+    audience: "Institutes and their learners",
     icon: GraduationCap,
-    accent: "indigo",
-    // TODO: confirm availability and final feature list with the product team
-    status: "Available",
+    accent: "blue",
+    status: "Live · in use",
+    url: "https://portal.ssrinstitute.in/",
   },
   {
-    id: "linkfix",
-    name: "LinkFix",
-    tagline: "WordPress link management & website optimization tool.",
+    id: "restaurant-billing",
+    name: "Restaurant Billing Software",
+    tagline: "Restaurant billing software currently in development.",
     description:
-      "Find broken links, manage redirects and keep your WordPress site healthy from a single dashboard — so visitors and search engines never hit a dead end.",
-    features: ["Broken link scanning", "Redirect management", "Site health overview", "Scheduled scans", "Exportable reports"],
-    audience: "WordPress site owners · Agencies · Content teams",
-    icon: Link2,
+      "We are developing this software to help restaurants manage billing and related operations. It is not yet a launched product.",
+    features: ["In development"],
+    audience: "Restaurants",
+    icon: Receipt,
     accent: "orange",
-    status: "Available",
-  },
-  {
-    id: "ai-editor",
-    name: "AI Editor",
-    tagline: "AI-powered content creation platform.",
-    description:
-      "Draft, rewrite and refine content with an assistant that works alongside you in the editor — keeping your tone while saving hours every week.",
-    features: ["In-editor AI assistant", "Rewrite & tone controls", "Outlines and SEO keywords", "Translation", "Draft history"],
-    audience: "Marketers · Writers · Content teams",
-    icon: PenLine,
-    accent: "cyan",
-    status: "Available",
+    status: "In development",
   },
   {
     id: "more",
@@ -167,7 +153,7 @@ export const catalog: {
 ];
 
 /* ---------------------------------------------------------
-   Projects — live client work
+   Projects
    --------------------------------------------------------- */
 export type Sector =
   | "Tourism"
@@ -184,9 +170,10 @@ export const portfolio: {
   sector: Sector;
   description: string;
   features: string[];
-  url: string;
+  url?: string;
   accent: Accent;
   image?: string;
+  status?: "In development";
 }[] = [
   {
     title: "Bhadradri Papikondalu",
@@ -195,7 +182,7 @@ export const portfolio: {
     features: ["Property listings", "Virtual tours", "Booking system"],
     url: "https://www.bhadradripapikondalu.com/",
     accent: "orange",
-    image: "/images/work-papikondalu.jpg",
+    image: "/images/project-logos/Bhadradri papikondalu-logos.png",
   },
   {
     title: "Mana Papikondalu",
@@ -204,6 +191,7 @@ export const portfolio: {
     features: ["Tour packages", "Online booking", "Travel guides"],
     url: "https://www.manapapikondalu.com/",
     accent: "cyan",
+    image: "/images/project-logos/papikondalu-logo.webp",
   },
   {
     title: "Viswa Bharathi Law",
@@ -212,7 +200,7 @@ export const portfolio: {
     features: ["Practice areas", "Attorney profiles", "Consultation booking"],
     url: "https://viswabharathilaw.edu.in/",
     accent: "red",
-    image: "/images/work-law.jpg",
+    image: "/images/project-logos/Viswabharathi-logo.webp",
   },
   {
     title: "SSR Institute",
@@ -221,7 +209,7 @@ export const portfolio: {
     features: ["Course listings", "Admissions portal", "Faculty profiles"],
     url: "https://www.ssrinstitute.in/",
     accent: "blue",
-    image: "/images/work-lms.jpg",
+    image: "/images/project-logos/ssr-institute-logo.png",
   },
   {
     title: "Anantha Education",
@@ -230,7 +218,7 @@ export const portfolio: {
     features: ["Programme showcase", "Admissions system", "Student portal"],
     url: "https://anantha.edu.in/wp/",
     accent: "indigo",
-    image: "/images/work-school.jpg",
+    image: "/images/project-logos/Anantha Logo.webp",
   },
   {
     title: "SSR MTM Hotel",
@@ -239,6 +227,7 @@ export const portfolio: {
     features: ["Room listings", "Amenities showcase", "Guest management"],
     url: "https://ssrmtm.com/",
     accent: "orange",
+    image: "/images/project-logos/SSRMTM-LOGO.jpeg",
   },
   {
     title: "OneWrap",
@@ -247,6 +236,7 @@ export const portfolio: {
     features: ["Portfolio showcase", "Service packages", "Client collaboration"],
     url: "https://www.onewrap.in/",
     accent: "indigo",
+    image: "/images/project-logos/Onewrap-logo.avif",
   },
   {
     title: "Sreenivas Legal Solutions",
@@ -255,6 +245,7 @@ export const portfolio: {
     features: ["Legal consultation", "Document management", "Case tracking"],
     url: "https://www.sreenivaslegalsolutions.in/",
     accent: "blue",
+    image: "/images/project-logos/sreenivas-legal-solutions-logo.webp",
   },
   {
     title: "SLS IT Skillup",
@@ -263,6 +254,7 @@ export const portfolio: {
     features: ["Course catalogue", "Hands-on projects", "Career guidance"],
     url: "https://slsitskillup.vercel.app/",
     accent: "cyan",
+    image: "/images/project-logos/SLSIT-Logo.png",
   },
   {
     title: "Rolls & Rattles",
@@ -271,6 +263,7 @@ export const portfolio: {
     features: ["Product catalogue", "Secure checkout", "Doorstep delivery"],
     url: "https://rollsandrattles.in/",
     accent: "red",
+    image: "/images/project-logos/rolls-and-rattles-logo.webp",
   },
   {
     title: "Sri Geetha Eye Hospitals",
@@ -279,6 +272,7 @@ export const portfolio: {
     features: ["Departments", "Doctor profiles", "Appointment booking"],
     url: "https://srigeethaeyehospitals.com/",
     accent: "cyan",
+    image: "/images/project-logos/sri-geetha-eye-hospitals-logo.webp",
   },
   {
     title: "Vijay Developer",
@@ -287,8 +281,20 @@ export const portfolio: {
     features: ["Project layouts", "Amenities showcase", "Site visit booking"],
     url: "https://vijayadeveloper.com/",
     accent: "orange",
+    image: "/images/project-logos/vijaya-developer-logo.webp",
+  },
+  {
+    title: "Chaitanya Dental Care",
+    sector: "Healthcare",
+    description: "Project currently in development.",
+    features: [],
+    accent: "cyan",
+    image: "/images/project-logos/Chaitanyadentalcare-logo.avif",
+    status: "In development",
   },
 ];
+
+export const liveProjectCount = portfolio.filter((project) => Boolean(project.url)).length;
 
 /* ---------------------------------------------------------
    Team
@@ -392,6 +398,19 @@ export const team: Member[] = [
     tags: ["Premiere Pro", "After Effects", "Motion"],
     skills: ["Video Editing", "Adobe Premiere Pro", "After Effects", "Motion Graphics", "Color Grading", "Sound Design", "Reels & Shorts", "Brand Videos", "Storytelling", "DaVinci Resolve"],
     accent: "blue",
+  },
+  {
+    slug: "sai-kiran-avusula",
+    name: "Sai Kiran Avusula",
+    role: "Project Consultant",
+    image: "/team/Sai%20Kiran%20Avusula.png",
+    short: "Project Consultant at SabariyaTech.",
+    about:
+      "Sai Kiran Avusula is a Project Consultant at SabariyaTech. Connect with him on LinkedIn for further professional details.",
+    tags: ["Project Consulting"],
+    skills: ["Project Consulting" ,  "Process Improvement", "Communication Skills", "Team Collaboration", "Problem Solving"],
+    accent: "indigo",
+    linkedin: "https://www.linkedin.com/in/sai-kiran-avusula-096655290/",
   },
 ];
 

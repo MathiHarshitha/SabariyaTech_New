@@ -12,7 +12,7 @@ import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
 import { cn, EASE } from "@/lib/utils";
 import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
-const filters: WorkFilter[] = ["All", "Education", "Travel & Tourism", "Legal Services"];
+const filters: WorkFilter[] = ["All", "Education", "Travel & Tourism", "Legal Services", "E-commerce"];
 
 export function Work() {
   const [filter, setFilter] = useState<WorkFilter>("All");
@@ -104,14 +104,25 @@ export function Work() {
                 className="snap-start"
               >
                 <article className="group flex h-full flex-col overflow-hidden rounded-[28px] bg-white shadow-soft transition-all duration-500 ease-premium hover:-translate-y-1.5 hover:shadow-lift">
-                  <div className="relative mx-2 mt-2 aspect-[4/3] overflow-hidden rounded-[22px] bg-gradient-to-br from-navy-700 to-brand-blue">
-                    <Image
-                      src={p.image}
-                      alt={p.alt}
-                      fill
-                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 85vw"
-                      className="object-cover transition-transform duration-700 ease-premium group-hover:scale-[1.04]"
-                    />
+                  <div className={cn("relative mx-2 mt-2 aspect-[4/3] overflow-hidden rounded-[22px]", p.image ? "bg-white" : "bg-navy-section")}>
+                    {p.image ? (
+                      <Image
+                        src={p.image}
+                        alt={`${p.title} logo`}
+                        fill
+                        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 85vw"
+                        className="object-contain p-7 transition-transform duration-700 ease-premium group-hover:scale-[1.04]"
+                      />
+                    ) : (
+                      <span className="absolute inset-0 grid place-items-center font-display text-[56px] font-extrabold tracking-[-0.05em] text-white/90">
+                        {p.title
+                          .split(/\s+/)
+                          .filter((word) => /^[A-Za-z]/.test(word))
+                          .slice(0, 2)
+                          .map((word) => word[0])
+                          .join("")}
+                      </span>
+                    )}
                     <span className={cn("absolute bottom-3 left-3 rounded-full bg-gradient-to-br px-3 py-1 font-display text-[11.5px] font-semibold text-white", accents[p.accent].badge)}>
                       {p.category}
                     </span>
@@ -126,8 +137,8 @@ export function Work() {
                         </li>
                       ))}
                     </ul>
-                    <LinkArrow href="#contact" className="mt-auto">
-                      Discuss a similar project
+                    <LinkArrow href={p.url ?? "#contact"} className="mt-auto">
+                      {p.url ? "Visit live site" : "Discuss a similar project"}
                     </LinkArrow>
                   </div>
                 </article>

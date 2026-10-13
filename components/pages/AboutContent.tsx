@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Compass, Eye, MapPin } from "lucide-react";
-import { about, aboutValues, portfolio, team } from "@/data/pages";
+import { about, aboutValues, liveProjectCount, portfolio, team } from "@/data/pages";
 import { site } from "@/data/site";
 import { accents } from "@/lib/accents";
 import { Button } from "@/components/ui/Button";
@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 /** River photo card for the about hero. */
 export function RiverCard() {
   const stats = [
-    { value: `${portfolio.length}+`, label: "Live projects" },
+    { value: `${liveProjectCount}+`, label: "Live projects" },
     { value: `${team.length}`, label: "Specialists" },
     { value: `${new Set(portfolio.map((p) => p.sector)).size}`, label: "Industries" },
   ];

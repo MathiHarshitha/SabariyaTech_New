@@ -47,40 +47,22 @@ export function MemberCard({ m }: { m: Member }) {
   );
 }
 
-/** Photo mosaic for the team hero. */
+/** Team photo for the team hero. */
 export function TeamMosaic() {
-  const [lead, ...rest] = team;
   return (
-    <div className="grid h-[440px] grid-cols-4 grid-rows-2 gap-3 sm:h-[480px]">
-      {[lead, ...rest.slice(0, 3)].map((m, i) => (
-        <Link
-          key={m.slug}
-          href={`/team/${m.slug}`}
-          className={cn(
-            "group relative overflow-hidden rounded-[24px] bg-gradient-to-br from-navy-700 to-brand-blue shadow-soft",
-            i === 0 ? "col-span-2 row-span-2" : i === 1 ? "col-span-2" : "col-span-1",
-          )}
-        >
-          <Image
-            src={m.image}
-            alt={`${m.name}, ${m.role}`}
-            fill
-            priority={i === 0}
-            sizes={i < 2 ? "(min-width: 1024px) 24vw, 50vw" : "(min-width: 1024px) 12vw, 25vw"}
-            className="object-cover object-top transition-transform duration-700 ease-premium group-hover:scale-[1.05]"
-          />
-          {i < 2 && (
-            <span className="glass absolute bottom-3 left-3 right-3 rounded-2xl px-3 py-2">
-              <b className="block truncate font-display text-[14px] font-semibold text-navy-900">{m.name}</b>
-              <small className="block truncate text-[11.5px] text-muted">{m.role}</small>
-            </span>
-          )}
-        </Link>
-      ))}
-      <a href="#full-team" className="bg-navy-section col-span-1 flex flex-col justify-end rounded-[24px] p-4 text-white transition-transform duration-300 hover:-translate-y-0.5">
-        <b className="font-display text-[34px] font-bold leading-none tracking-[-0.03em]">+{team.length - 4}</b>
-        <small className="mt-1 text-[12px] leading-tight text-white/60">more on the team</small>
-      </a>
+    <div className="relative h-[440px] overflow-hidden rounded-[24px] bg-navy-700 shadow-soft sm:h-[480px]">
+      <Image
+        src="/images/team.jpg"
+        alt="Team members collaborating around laptops"
+        fill
+        priority
+        sizes="(min-width: 1024px) 42vw, 100vw"
+        className="object-cover"
+      />
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-transparent to-transparent" />
+      <span className="absolute bottom-4 left-4 rounded-2xl border border-white/40 bg-white/80 px-4 py-3 font-display text-sm font-semibold text-navy-900 shadow-soft backdrop-blur-sm">
+        One team, building what&apos;s next
+      </span>
     </div>
   );
 }

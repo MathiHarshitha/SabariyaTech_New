@@ -1,19 +1,28 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
-import { Logo } from "@/components/ui/Logo";
 
 export default function NotFound() {
   return (
-    <main id="main" className="grid min-h-svh place-items-center px-4 text-center">
-      <div>
-        <div className="flex justify-center">
-          <Logo size={80} />
+    <main id="main" className="grid min-h-svh place-items-center px-4 py-12 text-center">
+      <div className="w-full max-w-4xl">
+        <div className="relative mx-auto aspect-[16/9] w-full max-w-3xl">
+          <Image
+            src="/images/404-Image.webp"
+            alt="Page not found"
+            fill
+            priority
+            sizes="(min-width: 768px) 768px, 100vw"
+            className="object-contain"
+          />
         </div>
-        <p className="mt-10 font-display text-[clamp(72px,14vw,160px)] font-extrabold leading-none tracking-[-0.05em] text-gradient-warm">404</p>
-        <h1 className="mt-4 text-2xl font-semibold">This page drifted off course.</h1>
+        <h1 className="mt-6 text-2xl font-semibold">This page drifted off course.</h1>
         <p className="mx-auto mt-3 max-w-md text-muted">The page you&apos;re looking for doesn&apos;t exist or has moved.</p>
-        <Button href="/" className="mt-8">
-          Back to home
-        </Button>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Button href="/">Go to home</Button>
+          <Button href="/contact" variant="soft" arrow={false}>
+            Contact us
+          </Button>
+        </div>
       </div>
     </main>
   );

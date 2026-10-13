@@ -147,7 +147,7 @@ export function Navbar() {
                         onClick={() => setOpen(false)}
                         aria-current={isActive(l.href) ? "page" : undefined}
                         className={cn(
-                          "block border-b border-ink/[0.07] py-1.5 font-display text-[26px] font-semibold tracking-[-0.03em] transition-all duration-300 hover:pl-2 hover:text-brand-orange",
+                          "block border-b border-ink/[0.07] py-1.5 font-display text-[22px] font-semibold tracking-[-0.03em] transition-all duration-300 hover:pl-2 hover:text-brand-orange sm:text-2xl",
                           isActive(l.href) ? "text-brand-orange" : "text-navy-900",
                         )}
                       >

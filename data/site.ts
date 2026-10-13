@@ -31,7 +31,7 @@ export const site = {
   email: "team@sabariyatech.in",
   phone: "+91 96525 57187",
   phoneHref: "tel:+919652557187",
-  address: "Benz Circle, Vijayawada, Andhra Pradesh, India",
+  address: "Vijayawada, Andhra Pradesh, India",
   city: "Vijayawada",
   tagline: "Turning ideas into impactful technology.",
   description:
@@ -74,7 +74,6 @@ export const clients = [
   { name: "SSR Institute", sector: "Education", mono: "SSR", accent: "blue" as Accent },
   { name: "Bhadradri Papikondalu", sector: "Travel & Tourism", mono: "BP", accent: "orange" as Accent },
   { name: "Viswa Bharathi", sector: "Legal Services", mono: "VB", accent: "indigo" as Accent },
-  { name: "School ERP", sector: "Education", mono: "SE", accent: "cyan" as Accent },
 ];
 
 /* ---------------------------------------------------------
@@ -114,7 +113,7 @@ export const services: { title: string; body: string; icon: LucideIcon; accent: 
 /* ---------------------------------------------------------
    Products
    --------------------------------------------------------- */
-export type ProductId = "linkfix" | "ai-editor" | "more";
+export type ProductId = "lms-portal" | "restaurant-billing" | "more";
 
 export const products: {
   id: ProductId;
@@ -123,27 +122,29 @@ export const products: {
   description: string;
   features: string[];
   accent: Accent;
-  status: string;
+  status: "Live · in use" | "In development" | "Coming soon";
+  url?: string;
 }[] = [
   {
-    id: "linkfix",
-    name: "LinkFix",
-    tagline: "WordPress link management & website optimization tool.",
+    id: "lms-portal",
+    name: "LMS Portal",
+    tagline: "A live learning platform built for institutes.",
     description:
-      "Find broken links, manage redirects and keep your WordPress site healthy from a single dashboard.",
-    features: ["Broken link scanning", "Redirect management", "Site health overview"],
-    accent: "orange",
-    status: "Available",
+      "We developed and deployed this portal to support structured learning, course management, student progress tracking, quizzes and coding practice. It is actively used by institutes.",
+    features: ["Structured courses", "Course management", "Student progress", "Quizzes & coding practice"],
+    accent: "blue",
+    status: "Live · in use",
+    url: "https://portal.ssrinstitute.in/",
   },
   {
-    id: "ai-editor",
-    name: "AI Editor",
-    tagline: "AI-powered content creation platform.",
+    id: "restaurant-billing",
+    name: "Restaurant Billing Software",
+    tagline: "Restaurant billing software currently in development.",
     description:
-      "Draft, rewrite and refine content with an assistant that works alongside you in the editor.",
-    features: ["In-editor AI assistant", "Rewrite & tone controls", "Outlines and SEO keywords"],
-    accent: "cyan",
-    status: "Available",
+      "We are developing this software to help restaurants manage billing and related operations. It is not yet a launched product.",
+    features: ["In development"],
+    accent: "orange",
+    status: "In development",
   },
   {
     id: "more",
@@ -159,14 +160,15 @@ export const products: {
 /* ---------------------------------------------------------
    Work
    --------------------------------------------------------- */
-export type WorkFilter = "All" | "Education" | "Travel & Tourism" | "Legal Services";
+export type WorkFilter = "All" | "Education" | "Travel & Tourism" | "Legal Services" | "E-commerce";
 
 // TODO: replace photography with real project screenshots
 export const projects: {
   title: string;
   category: Exclude<WorkFilter, "All">;
   description: string;
-  image: string;
+  url?: string;
+  image?: string;
   alt: string;
   scope: string[];
   accent: Accent;
@@ -175,37 +177,38 @@ export const projects: {
     title: "Bhadradri Papikondalu",
     category: "Travel & Tourism",
     description: "A full-stack booking platform with secure payments and real-time availability.",
-    image: "/images/work-papikondalu.jpg",
+    image: "/images/project-logos/Bhadradri papikondalu-logos.png",
     alt: "River winding between forested hills",
     scope: ["Booking", "Payments", "Availability"],
     accent: "orange",
   },
   {
-    title: "SSR Institute LMS",
+    title: "SSR Institute Website",
     category: "Education",
-    description: "A complete learning management system with online courses, quizzes and certifications.",
-    image: "/images/work-lms.jpg",
-    alt: "Students learning together on laptops",
-    scope: ["Courses", "Quizzes", "Certificates"],
+    description: "Institute website featuring course listings, admissions information and faculty profiles.",
+    url: "https://www.ssrinstitute.in/",
+    image: "/images/project-logos/ssr-institute-logo.png",
+    alt: "SSR Institute logo",
+    scope: ["Website", "Admissions", "Faculty"],
     accent: "blue",
   },
   {
     title: "Viswa Bharathi Law",
     category: "Legal Services",
     description: "Professional website for a law associate with modern design and SEO optimization.",
-    image: "/images/work-law.jpg",
+    image: "/images/project-logos/Viswabharathi-logo.webp",
     alt: "Scales of justice on a desk",
     scope: ["Website", "SEO", "Design"],
     accent: "red",
   },
   {
-    title: "School ERP",
-    category: "Education",
-    description: "A comprehensive ERP for schools with inventory, academics, finance and more.",
-    image: "/images/work-school.jpg",
-    alt: "School classroom",
-    scope: ["Academics", "Finance", "Inventory"],
-    accent: "cyan",
+    title: "Rolls & Rattles",
+    category: "E-commerce",
+    description: "Online store with a product catalogue, secure checkout and doorstep delivery.",
+    image: "/images/project-logos/rolls-and-rattles-logo.webp",
+    alt: "Rolls & Rattles logo",
+    scope: ["Product Catalogue", "Secure Checkout", "Delivery"],
+    accent: "red",
   },
 ];
 
@@ -266,28 +269,25 @@ export const teamValues: { label: string; icon: LucideIcon; accent: Accent }[] =
 ];
 
 /* ---------------------------------------------------------
-   Testimonials — PLACEHOLDERS, replace with approved quotes
+   Testimonials
    --------------------------------------------------------- */
 export const testimonials = [
   {
-    quote: "Client testimonial goes here. Ask the client for a short quote about the booking platform and its results.",
-    name: "[Client name]",
+    quote: "We now have an attractive and user-friendly website to present our tourism services. The design captures the travel experience and makes it easier for visitors to explore destinations and tour packages.",
     org: "Bhadradri Papikondalu",
     mono: "BP",
     accent: "orange" as Accent,
   },
   {
-    quote: "Client testimonial goes here. Ask the institute for a short quote about the LMS rollout and student experience.",
-    name: "[Client name]",
+    quote: "We now have a structured digital learning portal for our training programs. It brings courses, topics, practice questions, and student progress together in one place, creating a more organized learning experience.",
     org: "SSR Institute",
     mono: "SSR",
     accent: "blue" as Accent,
   },
   {
-    quote: "Client testimonial goes here. Ask the firm for a short quote about the new website and search visibility.",
-    name: "[Client name]",
-    org: "Viswa Bharathi Law",
-    mono: "VB",
+    quote: "Our new website gives us a professional online presence and presents our legal services clearly. The clean layout makes information easy to navigate and helps visitors learn more about our firm.",
+    org: "Sreenivasa Law Firm",
+    mono: "SL",
     accent: "red" as Accent,
   },
 ];
@@ -340,9 +340,8 @@ export const footerColumns = [
   {
     title: "Products",
     links: [
-      { label: "LinkFix", href: "/products#linkfix" },
-      { label: "AI Editor", href: "/products#ai-editor" },
-      { label: "Institute Portal", href: "/products#institute-portal" },
+      { label: "LMS Portal", href: "/products#lms-portal" },
+      { label: "Restaurant Billing Software", href: "/products#restaurant-billing" },
       { label: "Coming Soon", href: "/products#more" },
     ],
   },

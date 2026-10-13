@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
   motion,
@@ -252,7 +252,16 @@ export function Hero() {
   const [active, setActive] = useState(0);
   const [auto, setAuto] = useState(true);
   const [hovering, setHovering] = useState(false);
+  const [verticalTabs, setVerticalTabs] = useState(false);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1024px)");
+    const updateOrientation = () => setVerticalTabs(media.matches);
+    updateOrientation();
+    media.addEventListener("change", updateOrientation);
+    return () => media.removeEventListener("change", updateOrientation);
+  }, []);
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -290,7 +299,7 @@ export function Hero() {
     <section
       id="home"
       aria-labelledby="hero-title"
-      className="relative isolate overflow-hidden pb-12 pt-[112px] lg:pb-[150px] lg:pt-[clamp(100px,15svh,148px)]"
+      className="relative isolate overflow-hidden pb-12 pt-[clamp(96px,14svh,112px)] lg:pb-[150px] lg:pt-[clamp(100px,15svh,148px)]"
     >
       {/* ---------- backdrop: dot grid + brand glows ---------- */}
       <SectionBackdrop variant="aurora">
@@ -301,7 +310,7 @@ export function Hero() {
       <div className="container-x relative text-center">
         <motion.p
           {...rise(0.05)}
-          className="mx-auto inline-flex items-center gap-2.5 rounded-full border border-white bg-white/70 py-1.5 pl-1.5 pr-4 font-display text-[11.5px] font-semibold uppercase tracking-[0.22em] text-navy-900 shadow-soft backdrop-blur"
+          className="mx-auto inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-white bg-white/70 px-3 py-1.5 font-display text-[10px] font-semibold uppercase tracking-[0.12em] text-navy-900 shadow-soft backdrop-blur sm:gap-2.5 sm:pl-1.5 sm:pr-4 sm:text-[11.5px] sm:tracking-[0.22em]"
         >
           <span className="rounded-full bg-navy-900 px-2.5 py-1 text-[10px] tracking-[0.16em] text-white">Studio</span>
           Ideas <span className="-ml-1.5 text-brand-orange">flow.</span> Solutions <span className="-ml-1.5 text-brand-blue">grow.</span>
@@ -310,7 +319,7 @@ export function Hero() {
         <motion.h1
           id="hero-title"
           {...rise(0.15)}
-          className="mx-auto mt-[clamp(16px,3svh,28px)] max-w-[1100px] text-[clamp(42px,11vw,58px)] font-extrabold leading-[1.02] tracking-[-0.045em] md:text-[clamp(44px,min(6.4vw,11.5svh),96px)]"
+          className="mx-auto mt-[clamp(16px,3svh,28px)] max-w-[1100px] text-[clamp(38px,10.4vw,58px)] font-extrabold leading-[1.02] tracking-[-0.045em] md:text-[clamp(44px,min(6.4vw,11.5svh),96px)]"
         >
           Turning ideas into <br className="hidden md:inline" />
           <span className="relative inline-block whitespace-nowrap">
@@ -338,19 +347,20 @@ export function Hero() {
           <span className="text-gradient-ink">technology.</span>
         </motion.h1>
 
-        <motion.p {...rise(0.28)} className="mx-auto mt-[clamp(16px,3svh,28px)] max-w-[640px] text-[17px] text-muted md:text-[18px]">
+        <motion.p {...rise(0.28)} className="mx-auto mt-[clamp(16px,3svh,28px)] max-w-[640px] text-[16px] text-muted sm:text-[17px] md:text-[18px]">
           {site.description}
         </motion.p>
 
         <motion.div {...rise(0.38)} className="mt-[clamp(20px,4svh,36px)] flex justify-center">
-          <div className="relative flex flex-col gap-3.5 sm:flex-row">
-            <Button href="#contact" size="lg">
+          <div className="relative flex w-full max-w-[320px] flex-col gap-3.5 sm:w-auto sm:max-w-none sm:flex-row">
+            <Button href="#contact" size="lg" className="w-full sm:w-auto">
               Start a Project
             </Button>
             <Button
               href="#work"
               size="lg"
               variant="soft"
+              className="w-full sm:w-auto"
               leading={
                 <span className="grid size-9 place-items-center rounded-full bg-navy-900 text-white">
                   <Play aria-hidden className="ml-0.5 size-3 fill-current" />
@@ -366,7 +376,7 @@ export function Hero() {
               initial={{ opacity: 0, x: 12, rotate: -4 }}
               animate={{ opacity: 1, x: 0, rotate: -4 }}
               transition={{ duration: 0.9, ease: EASE, delay: 1 }}
-              className="absolute left-[calc(100%+12px)] top-1/2 hidden -translate-y-1/2 items-center gap-1.5 whitespace-nowrap text-left font-script text-[24px] leading-[1.05] text-navy-900/70 lg:flex"
+              className="absolute left-[calc(100%+12px)] top-1/2 hidden -translate-y-1/2 items-center gap-1.5 whitespace-nowrap text-left font-handwritten text-[30px] leading-[1.05] text-navy-900/70 lg:flex"
             >
               <svg viewBox="0 0 60 44" className="h-10 w-12 shrink-0 text-brand-orange">
                 <path d="M56 8 C 46 30, 26 36, 6 30 M6 30 l10 -8 M6 30 l11 5" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
@@ -382,7 +392,7 @@ export function Hero() {
       </div>
 
       {/* ---------- build console ---------- */}
-      <div className="container-x mt-14 lg:mt-16">
+      <div className="container-x mt-10 sm:mt-14 lg:mt-16">
         <motion.div
           initial={{ opacity: 0, y: 48, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -394,7 +404,7 @@ export function Hero() {
             mx.set(0);
             my.set(0);
           }}
-          className="relative overflow-hidden rounded-[28px] bg-navy-section p-3 shadow-[0_50px_100px_-40px_rgb(7_26_53/0.6)] sm:p-4 lg:rounded-[36px] lg:p-5"
+          className="relative overflow-hidden rounded-[24px] bg-navy-section p-2.5 shadow-[0_50px_100px_-40px_rgb(7_26_53/0.6)] sm:rounded-[28px] sm:p-4 lg:rounded-[36px] lg:p-5"
         >
           <Image
             src="/images/hero-mountains.jpg"
@@ -406,7 +416,7 @@ export function Hero() {
           />
           <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
 
-          <div className="relative grid gap-3 lg:grid-cols-[minmax(260px,320px)_1fr] lg:gap-5">
+          <div className="relative grid min-w-0 gap-3 lg:grid-cols-[minmax(260px,320px)_minmax(0,1fr)] lg:gap-5">
             {/* capability tabs */}
             <div className="flex flex-col">
               <p className="hidden px-3 pb-3 pt-2 font-display text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 lg:block">
@@ -415,9 +425,9 @@ export function Hero() {
               <div
                 role="tablist"
                 aria-label="What we build"
-                aria-orientation="vertical"
+                aria-orientation={verticalTabs ? "vertical" : "horizontal"}
                 onKeyDown={onTabKey}
-                className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0 lg:pb-0"
+                className="grid grid-cols-2 gap-2 lg:flex lg:flex-col"
               >
                 {heroCapabilities.map((c, i) => {
                   const on = i === active;
@@ -435,20 +445,20 @@ export function Hero() {
                       tabIndex={on ? 0 : -1}
                       onClick={() => select(i)}
                       className={cn(
-                        "group relative flex shrink-0 items-center gap-3 overflow-hidden rounded-[18px] p-2.5 pr-4 text-left transition-colors duration-300 lg:p-3",
+                        "group relative flex min-h-14 min-w-0 items-center gap-2 overflow-hidden rounded-[16px] p-2 text-left transition-colors duration-300 sm:gap-3 sm:p-2.5 lg:rounded-[18px] lg:p-3",
                         on ? "bg-white text-navy-900" : "text-white hover:bg-white/[0.07]",
                       )}
                     >
                       <span
                         className={cn(
-                          "grid size-10 shrink-0 place-items-center rounded-xl transition-colors duration-300",
+                          "grid size-9 shrink-0 place-items-center rounded-xl transition-colors duration-300 lg:size-10",
                           on ? cn("bg-gradient-to-br text-white", accents[c.accent].badge) : "bg-white/10 text-white/80",
                         )}
                       >
                         <c.icon aria-hidden className="size-5" />
                       </span>
                       <span className="min-w-0">
-                        <b className="block whitespace-nowrap font-display text-sm font-semibold">{c.title}</b>
+                        <b className="block font-display text-[11px] font-semibold leading-tight sm:text-xs lg:whitespace-nowrap lg:text-sm">{c.title}</b>
                         <small className={cn("hidden text-xs lg:block", on ? "text-muted" : "text-white/50")}>{c.caption}</small>
                       </span>
                       <span className={cn("ml-auto hidden font-display text-xs font-semibold lg:block", on ? "text-brand-orange" : "text-white/30")}>
@@ -471,12 +481,12 @@ export function Hero() {
               {/* stats */}
               <dl className="mt-3 grid grid-cols-3 gap-2 lg:mt-auto lg:gap-0 lg:border-t lg:border-white/10 lg:pt-4">
                 {heroStats.map((s, i) => (
-                  <div key={s.label} className={cn("rounded-2xl bg-white/[0.05] p-3 lg:rounded-none lg:bg-transparent lg:px-3 lg:py-1", i > 0 && "lg:border-l lg:border-white/10")}>
+                  <div key={s.label} className={cn("min-w-0 rounded-xl bg-white/[0.05] p-2.5 sm:rounded-2xl sm:p-3 lg:rounded-none lg:bg-transparent lg:px-3 lg:py-1", i > 0 && "lg:border-l lg:border-white/10")}>
                     <dt className="sr-only">{s.label}</dt>
-                    <dd className="font-display text-2xl font-bold leading-tight tracking-[-0.03em] text-white">
+                    <dd className="font-display text-xl font-bold leading-tight tracking-[-0.03em] text-white sm:text-2xl">
                       <CountUp value={s.value} suffix={s.suffix} />
                     </dd>
-                    <dd aria-hidden className="text-[11.5px] leading-tight text-white/55">
+                    <dd aria-hidden className="text-[10px] leading-tight text-white/55 sm:text-[11.5px]">
                       {s.label}
                     </dd>
                   </div>
@@ -485,7 +495,7 @@ export function Hero() {
             </div>
 
             {/* console window */}
-            <motion.div style={{ rotateX, rotateY, transformPerspective: 1600 }} className="relative">
+            <motion.div style={{ rotateX, rotateY, transformPerspective: 1600 }} className="relative min-w-0">
               <div className="flex h-full flex-col overflow-hidden rounded-[22px] border border-white/10 bg-navy-950/60 shadow-[inset_0_1px_0_rgb(255_255_255/0.06)] backdrop-blur-md lg:rounded-[26px]">
                 <div className="flex items-center gap-3 border-b border-white/[0.07] px-4 py-3">
                   <span aria-hidden className="flex gap-1.5">
@@ -504,7 +514,7 @@ export function Hero() {
                   id="hero-panel"
                   role="tabpanel"
                   aria-labelledby={`hero-tab-${active}`}
-                  className="relative h-[330px] p-4 sm:h-[360px] lg:h-[400px] lg:p-5"
+                  className="relative h-[340px] p-3 sm:h-[360px] sm:p-4 lg:h-[400px] lg:p-5"
                 >
                   <AnimatePresence mode="wait">
                     <Scene key={current.title} />

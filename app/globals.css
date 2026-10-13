@@ -91,6 +91,7 @@
   --font-display: var(--font-poppins), "Poppins", system-ui, sans-serif;
   --font-sans: var(--font-poppins), "Poppins", system-ui, sans-serif;
   --font-script: var(--font-poppins), "Poppins", cursive;
+  --font-handwritten: var(--font-caveat), cursive;
 }
 
 /* =========================================================

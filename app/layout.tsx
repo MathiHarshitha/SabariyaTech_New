@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins } from "next/font/google";
+import { Caveat, Poppins } from "next/font/google";
 import { site } from "@/data/site";
 import { MotionProvider } from "@/components/providers/MotionProvider";
 import "./globals.css";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-poppins", display: "swap" });
+const caveat = Caveat({ subsets: ["latin"], weight: ["600"], variable: "--font-caveat", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -22,8 +23,8 @@ export const metadata: Metadata = {
     "ERP",
     "CRM",
     "SaaS",
-    "LinkFix",
-    "AI Editor",
+    "LMS Portal",
+    "Restaurant Billing Software",
   ],
   alternates: { canonical: "/" },
   openGraph: {
@@ -64,7 +65,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={poppins.variable}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${poppins.variable} ${caveat.variable}`}>
       <body>
         <a
           href="#main"
