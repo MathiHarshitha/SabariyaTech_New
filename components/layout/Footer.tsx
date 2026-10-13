@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Mail, MapPin, PhoneCall } from "lucide-react";
 import { footerColumns, site, socials } from "@/data/site";
 import { socialIcons } from "@/components/ui/BrandIcons";
+import { Logo } from "@/components/ui/Logo";
 
 function Heading({ children }: { children: React.ReactNode }) {
   return (
@@ -22,12 +22,9 @@ export function Footer() {
 
   return (
     <footer className="relative isolate overflow-hidden bg-[#061936] pb-8 pt-20 text-[#D6E2F3]/80 md:pt-32">
-      {/* ---------- backdrop: the logo mark, lit softly behind the links ---------- */}
+      {/* ---------- backdrop: soft brand glows behind the links ---------- */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(900px_500px_at_15%_0%,rgb(8_120_232/0.22),transparent_70%),radial-gradient(700px_420px_at_100%_100%,rgb(8_120_232/0.18),transparent_70%)]" />
-        <div className="absolute left-1/2 top-[-6%] aspect-[780/800] w-[min(760px,120vw)] -translate-x-1/2 opacity-40 mix-blend-screen blur-[1.5px] md:left-[25%] md:top-[-13%] md:w-[38%] md:min-w-[520px] md:translate-x-0 md:opacity-55">
-          <Image src="/brand/footer-mark.jpg" alt="" fill sizes="(min-width: 768px) 38vw, 120vw" className="object-contain" />
-        </div>
         {/* soft wave bands echoing the logo's water */}
         <svg viewBox="0 0 1440 500" preserveAspectRatio="none" className="absolute inset-x-0 bottom-0 h-[70%] w-full">
           <defs>
@@ -50,9 +47,8 @@ export function Footer() {
         <div className="grid gap-0 pb-12 md:grid-cols-3 md:gap-10 md:pb-20 lg:grid-cols-[1.35fr_1fr_1.05fr_0.8fr_1.25fr] lg:gap-8">
           {/* brand */}
           <div className="mb-10 md:col-span-3 lg:col-span-1 lg:mb-0">
-            <Link href="/" aria-label={`${site.name} home`} className="inline-block font-display text-[30px] font-bold leading-none tracking-[-0.03em]">
-              <span className="text-gradient-warm">Sabariya</span>
-              <span className="text-gradient-cool">Tech</span>
+            <Link href="/" aria-label={`${site.name} home`} className="inline-block">
+              <Logo size={60} className="brightness-0 invert" />
             </Link>
             <p className="mt-5 max-w-[270px] text-[16px] leading-relaxed text-[#D6E2F3]/85">{site.footerLine}</p>
             <ul className="mt-8 flex gap-3">

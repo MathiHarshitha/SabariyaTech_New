@@ -11,7 +11,7 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "text-white bg-[linear-gradient(100deg,var(--color-brand-orange)_0%,var(--color-brand-orange)_45%,var(--color-brand-red)_100%)] bg-[length:200%_100%] shadow-cta hover:bg-[position:100%_0] hover:shadow-[inset_0_1px_0_rgb(255_255_255/0.28),0_16px_32px_-12px_rgb(240_68_50/0.65)]",
+    "text-white bg-[linear-gradient(100deg,var(--color-brand-orange)_0%,var(--color-brand-orange)_45%,var(--color-brand-blue)_100%)] bg-[length:200%_100%] shadow-cta hover:bg-[position:100%_0] hover:shadow-[inset_0_1px_0_rgb(255_255_255/0.28),0_16px_32px_-12px_rgb(255_106_0/0.65)]",
   soft: "bg-white text-navy-900 shadow-clay hover:shadow-lift",
   glass:
     "text-white bg-white/10 border border-white/25 backdrop-blur-md hover:bg-white/15",

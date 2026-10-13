@@ -6,10 +6,12 @@ import { IconBadge } from "@/components/ui/IconBadge";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
 import { cn } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 export function Services() {
   return (
-    <section id="solutions" aria-labelledby="solutions-title" className="relative pb-36 pt-24 md:pb-48 md:pt-32">
+    <section id="solutions" aria-labelledby="solutions-title" className="relative isolate pb-36 pt-24 md:pb-48 md:pt-32">
+      <SectionBackdrop variant="grid" />
       <div className="container-x grid items-center gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
         <Reveal className="relative">
           <Eyebrow>What we do</Eyebrow>

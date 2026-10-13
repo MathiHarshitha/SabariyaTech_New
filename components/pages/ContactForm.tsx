@@ -78,7 +78,7 @@ export function ContactForm() {
       </label>
       <button
         type="submit"
-        className="group mt-5 inline-flex h-[52px] w-full items-center justify-center gap-2.5 rounded-2xl bg-[linear-gradient(100deg,var(--color-brand-orange)_0%,var(--color-brand-orange)_45%,var(--color-brand-red)_100%)] bg-[length:200%_100%] font-display text-[15px] font-semibold text-white shadow-cta transition-all duration-300 ease-premium hover:-translate-y-0.5 hover:bg-[position:100%_0]"
+        className="group mt-5 inline-flex h-[52px] w-full items-center justify-center gap-2.5 rounded-2xl bg-[linear-gradient(100deg,var(--color-brand-orange)_0%,var(--color-brand-orange)_45%,var(--color-brand-blue)_100%)] bg-[length:200%_100%] font-display text-[15px] font-semibold text-white shadow-cta transition-all duration-300 ease-premium hover:-translate-y-0.5 hover:bg-[position:100%_0]"
       >
         Send message
         <ArrowRight aria-hidden className="size-[18px] transition-transform duration-300 group-hover:translate-x-1" />

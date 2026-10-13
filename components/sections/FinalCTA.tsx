@@ -6,6 +6,7 @@ import { ctaChecklist, projectTypes, site } from "@/data/site";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/Typography";
 import { cn } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 const MARQUEE = ["Web Platforms", "AI Agents", "Business Systems", "Cloud", "SaaS Products", "Digital Growth"];
 
@@ -46,11 +47,9 @@ export function FinalCTA() {
       <div className="container-x">
         <Reveal className="relative isolate overflow-hidden rounded-[28px] bg-navy-950 text-white shadow-[0_50px_100px_-50px_rgb(7_26_53/0.75)] md:rounded-[36px]">
           {/* light, not lines: two brand glows and a soft dot field */}
-          <div aria-hidden className="absolute inset-0 -z-10">
-            <div className="absolute -bottom-40 -left-32 size-[560px] rounded-full bg-brand-orange/25 blur-[130px]" />
-            <div className="absolute -right-32 -top-40 size-[560px] rounded-full bg-brand-blue/30 blur-[130px]" />
+          <SectionBackdrop variant="magnet">
             <div className="absolute inset-0 bg-[radial-gradient(rgb(255_255_255/0.07)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_at_center,#000_20%,transparent_75%)]" />
-          </div>
+          </SectionBackdrop>
 
           {/* kinetic word band */}
           <div aria-hidden className="overflow-hidden border-b border-white/[0.08] py-2.5 md:py-3">
@@ -124,7 +123,7 @@ export function FinalCTA() {
             <form id="brief" onSubmit={onSubmit} aria-label="Project brief" className="scroll-mt-28 self-start rounded-[24px] bg-white p-1.5 text-ink shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)] lg:rotate-[0.6deg]">
               <div className="flex items-center gap-3 rounded-[19px] bg-canvas px-3.5 py-2.5">
                 <span aria-hidden className="flex gap-1.5">
-                  <span className="size-2.5 rounded-full bg-brand-red/70" />
+                  <span className="size-2.5 rounded-full bg-brand-orange/70" />
                   <span className="size-2.5 rounded-full bg-brand-amber/70" />
                   <span className="size-2.5 rounded-full bg-emerald-400/80" />
                 </span>
@@ -172,7 +171,7 @@ export function FinalCTA() {
 
                 <button
                   type="submit"
-                  className="group mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-[linear-gradient(100deg,var(--color-brand-orange)_0%,var(--color-brand-orange)_45%,var(--color-brand-red)_100%)] bg-[length:200%_100%] font-display text-[14px] font-semibold text-white shadow-cta transition-all duration-300 ease-premium hover:-translate-y-0.5 hover:bg-[position:100%_0]"
+                  className="group mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-[linear-gradient(100deg,var(--color-brand-orange)_0%,var(--color-brand-orange)_45%,var(--color-brand-blue)_100%)] bg-[length:200%_100%] font-display text-[14px] font-semibold text-white shadow-cta transition-all duration-300 ease-premium hover:-translate-y-0.5 hover:bg-[position:100%_0]"
                 >
                   Send brief
                   <ArrowRight aria-hidden className="size-[18px] transition-transform duration-300 group-hover:translate-x-1" />

@@ -1,12 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Caveat, Inter, Sora } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { site } from "@/data/site";
 import { MotionProvider } from "@/components/providers/MotionProvider";
 import "./globals.css";
 
-const sora = Sora({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-sora", display: "swap" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const caveat = Caveat({ subsets: ["latin"], weight: ["600"], variable: "--font-caveat", display: "swap" });
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-poppins", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -60,13 +58,13 @@ const jsonLd = {
   email: site.email,
   telephone: site.phone,
   address: { "@type": "PostalAddress", streetAddress: "Benz Circle", addressLocality: "Vijayawada", addressRegion: "Andhra Pradesh", addressCountry: "IN" },
-  logo: `${site.url}/brand/logo-mark.png`,
+  logo: `${site.url}/Logo.svg`,
   description: site.description,
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${sora.variable} ${inter.variable} ${caveat.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={poppins.variable}>
       <body>
         <a
           href="#main"

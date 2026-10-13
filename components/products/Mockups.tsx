@@ -37,7 +37,7 @@ function Chrome({ url, dark }: { url: string; dark?: boolean }) {
 export function LinkFixMockup() {
   const bars = [38, 52, 44, 66, 58, 78, 70, 92];
   const rows = [
-    { path: "/blog/seo-guide", status: "404", tone: "bg-[#FDE4E0] text-brand-red", action: "Fix", done: false },
+    { path: "/blog/seo-guide", status: "404", tone: "bg-brand-orange/10 text-brand-orange", action: "Fix", done: false },
     { path: "/services/old-page", status: "301", tone: "bg-[#FFF1DB] text-[#C26A00]", action: "Done", done: true },
     { path: "/pricing", status: "200", tone: "bg-[#DDF6EC] text-[#0E8A5F]", action: "OK", done: true },
     { path: "/case-studies/lms", status: "200", tone: "bg-[#DDF6EC] text-[#0E8A5F]", action: "OK", done: true },
@@ -85,7 +85,7 @@ export function LinkFixMockup() {
             ].map((s) => (
               <div key={s.k} className="rounded-xl bg-white p-2.5 shadow-[0_2px_6px_rgb(16_33_61/0.05)]">
                 <small className="block truncate text-[10px] text-muted">{s.k}</small>
-                <b className={cn("font-display text-lg", s.red && "text-brand-red")}>{s.v}</b>
+                <b className={cn("font-display text-lg", s.red && "text-brand-orange")}>{s.v}</b>
               </div>
             ))}
           </div>
@@ -238,7 +238,7 @@ export function InstitutePortalMockup() {
       <div className="flex min-h-0 flex-1">
         <aside className="hidden w-[150px] shrink-0 flex-col gap-1 bg-navy-900 p-3 sm:flex">
           <div className="mb-3 flex items-center gap-2 px-1.5 font-display text-[13px] font-bold text-white">
-            <span className="grid size-6 place-items-center rounded-md bg-brand-indigo">
+            <span className="grid size-6 place-items-center rounded-md bg-brand-blue">
               <GraduationCap className="size-3.5" strokeWidth={2.5} />
             </span>
             Institute
@@ -255,7 +255,7 @@ export function InstitutePortalMockup() {
               <b className="font-display text-[15px]">Good morning, Principal</b>
               <p className="text-[10.5px] text-muted">Academic year 2026–27 · Term 1</p>
             </div>
-            <span className="rounded-lg bg-brand-indigo px-2.5 py-1 text-[10.5px] font-semibold text-white">+ New admission</span>
+            <span className="rounded-lg bg-brand-blue px-2.5 py-1 text-[10.5px] font-semibold text-white">+ New admission</span>
           </div>
           <div className="grid grid-cols-3 gap-2.5">
             {[
@@ -281,7 +281,7 @@ export function InstitutePortalMockup() {
                     initial={{ height: 0 }}
                     animate={{ height: `${h - 30}px` }}
                     transition={{ duration: 0.8, ease: EASE, delay: 0.1 + i * 0.05 }}
-                    className="w-full rounded-t-[4px] bg-gradient-to-b from-[#8C7CF5] to-brand-indigo"
+                    className="w-full rounded-t-[4px] bg-gradient-to-b from-[#4FA6FF] to-brand-blue"
                   />
                   <small className="text-[8.5px] text-muted">{["VI", "VII", "VIII", "IX", "X", "XI"][i]}</small>
                 </div>
@@ -291,7 +291,7 @@ export function InstitutePortalMockup() {
           <ul className="flex flex-col gap-1.5">
             {admissions.map((a) => (
               <li key={a.name} className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5 text-[10.5px]">
-                <span className="grid size-6 place-items-center rounded-full bg-brand-indigo/10 font-display text-[9px] font-bold text-brand-indigo">
+                <span className="grid size-6 place-items-center rounded-full bg-brand-blue/10 font-display text-[9px] font-bold text-brand-blue">
                   {a.name[0]}
                 </span>
                 <span className="min-w-0 flex-1 truncate">
@@ -316,7 +316,7 @@ export function ComingSoonMockup() {
         <div className="grid h-full grid-cols-3 grid-rows-2 gap-3 opacity-70 blur-[2px]">
           <span className="col-span-1 row-span-2 rounded-xl border border-white/10 bg-gradient-to-b from-brand-blue/35 to-brand-cyan/5" />
           <span className="col-span-2 rounded-xl border border-white/10 bg-white/5" />
-          <span className="rounded-xl border border-white/10 bg-gradient-to-br from-brand-orange/30 to-brand-red/5" />
+          <span className="rounded-xl border border-white/10 bg-gradient-to-br from-brand-orange/30 to-brand-amber/5" />
           <span className="rounded-xl border border-white/10 bg-white/[0.04]" />
         </div>
         <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1 rounded-2xl border border-white/15 bg-navy-900/60 px-8 py-6 backdrop-blur-md">

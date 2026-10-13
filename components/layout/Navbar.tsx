@@ -53,7 +53,7 @@ export function Navbar() {
           )}
         >
           <Link href="/" aria-label={`${site.name} home`} className="shrink-0">
-            <Logo priority />
+            <Logo size={65} priority />
           </Link>
 
           <nav aria-label="Primary" className="hidden xl:block">
@@ -122,7 +122,7 @@ export function Navbar() {
               className="absolute inset-y-3 right-3 flex w-[min(420px,calc(100%-24px))] flex-col rounded-[28px] bg-canvas px-6 pb-6 pt-5 shadow-[0_30px_80px_-20px_rgb(7_26_53/0.5)]"
             >
               <div className="flex items-center justify-between">
-                <Logo size={36} />
+                <Logo size={44} />
                 <button
                   ref={closeRef}
                   type="button"

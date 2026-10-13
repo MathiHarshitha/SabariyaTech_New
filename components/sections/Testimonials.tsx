@@ -4,6 +4,7 @@ import { accents } from "@/lib/accents";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2 } from "@/components/ui/Typography";
 import { cn } from "@/lib/utils";
+import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 /*
  * PLACEHOLDER CONTENT — every quote below must be replaced with a real,
@@ -12,7 +13,8 @@ import { cn } from "@/lib/utils";
  */
 export function Testimonials() {
   return (
-    <section id="testimonials" aria-labelledby="testimonials-title" className="relative pb-24 pt-12 md:pb-32 md:pt-20">
+    <section id="testimonials" aria-labelledby="testimonials-title" className="relative isolate pb-24 pt-12 md:pb-32 md:pt-20">
+      <SectionBackdrop variant="plane" />
       <div className="container-x">
         <Reveal className="mb-14 max-w-[640px]">
           <Eyebrow>Testimonials</Eyebrow>

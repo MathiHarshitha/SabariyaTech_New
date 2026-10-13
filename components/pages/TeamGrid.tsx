@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 import { team, type Member } from "@/data/pages";
 import { teamValues } from "@/data/site";
 import { accents } from "@/lib/accents";
-import { Curve } from "@/components/ui/Curve";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
 import { cn } from "@/lib/utils";
@@ -115,8 +114,7 @@ export function TeamGrid() {
 
 export function TeamValues() {
   return (
-    <section aria-labelledby="values-title" className="bg-navy-section relative overflow-hidden py-32 text-white md:py-[190px]">
-      <Curve variant="into-dark-b" position="top" />
+    <section aria-labelledby="values-title" className="bg-navy-section relative overflow-hidden py-24 text-white md:py-32">
       <div className="container-x relative z-[2] grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <Reveal>
           <Eyebrow light>What drives us</Eyebrow>
@@ -142,7 +140,6 @@ export function TeamValues() {
           ))}
         </ul>
       </div>
-      <Curve variant="out-of-dark-b" position="bottom" lineClass="stroke-brand-cyan/70" />
     </section>
   );
 }

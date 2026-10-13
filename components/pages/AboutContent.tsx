@@ -5,7 +5,6 @@ import { about, aboutValues, portfolio, team } from "@/data/pages";
 import { site } from "@/data/site";
 import { accents } from "@/lib/accents";
 import { Button } from "@/components/ui/Button";
-import { Curve } from "@/components/ui/Curve";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
@@ -23,10 +22,6 @@ export function RiverCard() {
       <div className="relative aspect-[5/4] overflow-hidden rounded-[36px_120px_36px_36px] bg-gradient-to-br from-[#2a4a7a] to-[#f39b4a] shadow-[0_50px_100px_-40px_rgb(7_26_53/0.6)]">
         <Image src="/images/process-mist.jpg" alt="Mist rolling over a river valley" fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
         <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgb(7_26_53/0.05)_30%,rgb(7_26_53/0.6))]" />
-        <svg aria-hidden viewBox="0 0 500 400" preserveAspectRatio="none" className="absolute inset-0 size-full">
-          <path d="M-10 330 C 90 280 160 360 260 300 S 420 180 510 210" fill="none" stroke="#FFB347" strokeWidth={3} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-          <path d="M-10 346 C 100 298 170 374 272 316 S 430 198 510 228" fill="none" stroke="#4FD3FF" strokeWidth={2} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-        </svg>
         <p className="absolute left-6 top-6 max-w-[220px] font-script text-[26px] leading-[1.05] text-white [text-shadow:0_2px_18px_rgb(7_26_53/0.45)]">
           Inspired by the Sabari River
         </p>
@@ -85,8 +80,7 @@ export function Story() {
 
 export function Values() {
   return (
-    <section aria-labelledby="values-title" className="bg-navy-section relative overflow-hidden py-32 text-white md:py-[200px]">
-      <Curve variant="into-dark-c" position="top" />
+    <section aria-labelledby="values-title" className="bg-navy-section relative overflow-hidden py-24 text-white md:py-32">
       <div className="container-x relative z-[2]">
         <Reveal className="grid items-end gap-x-16 gap-y-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
@@ -117,7 +111,6 @@ export function Values() {
           ))}
         </ul>
       </div>
-      <Curve variant="out-of-dark-b" position="bottom" lineClass="stroke-brand-cyan/70" />
     </section>
   );
 }
