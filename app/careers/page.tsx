@@ -6,28 +6,28 @@ import { Culture, HiringCard, HiringProcess, Openings } from "@/components/pages
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Tech Jobs & Careers in Vijayawada",
+  title: "Tech Jobs & Careers at SabariyaTech",
   description:
-    "Join SabariyaTech in Vijayawada. We're hiring for tech and digital marketing roles. Explore open positions, our engineering culture and our simple four-step hiring process.",
+    "Join SabariyaTech. We're hiring for tech and digital marketing roles. Explore open positions, our engineering culture and our simple four-step hiring process.",
   alternates: { canonical: "/careers" },
   keywords: [
-    "tech jobs Vijayawada",
-    "software developer jobs Vijayawada",
-    "digital marketing jobs Vijayawada",
-    "IT careers Andhra Pradesh",
+    "tech jobs India",
+    "software developer jobs Andhra Pradesh",
+    "digital marketing jobs India",
+    "IT careers India",
     "SabariyaTech careers",
-    "software company jobs Vijayawada",
+    "software company jobs India",
   ],
   openGraph: {
-    title: "Tech Jobs & Careers in Vijayawada | SabariyaTech",
+    title: "Tech Jobs & Careers at SabariyaTech",
     description:
-      "Join SabariyaTech in Vijayawada. We're hiring for tech and digital marketing roles. Explore open positions and our engineering culture.",
+      "Join SabariyaTech. We're hiring for tech and digital marketing roles. Explore open positions and our engineering culture.",
     url: "/careers",
   },
   twitter: {
-    title: "Tech Jobs & Careers in Vijayawada | SabariyaTech",
+    title: "Tech Jobs & Careers at SabariyaTech",
     description:
-      "Join SabariyaTech in Vijayawada. We're hiring for tech and digital marketing roles. Explore open positions and our engineering culture.",
+      "Join SabariyaTech. We're hiring for tech and digital marketing roles. Explore open positions and our engineering culture.",
   },
 };
 

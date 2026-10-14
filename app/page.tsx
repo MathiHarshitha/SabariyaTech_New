@@ -14,30 +14,29 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Software Development Company in Vijayawada",
+  title: "SabariyaTech | Software Development Company",
   description:
-    "SabariyaTech builds websites, web applications, AI systems and business software for companies in Vijayawada and across India. 10+ live projects, 8+ happy clients. Start your project today.",
+    "SabariyaTech builds websites, web applications, AI systems and business software for companies 10+ live projects, 8+ happy clients. Start your project today.",
   alternates: { canonical: "/" },
   keywords: [
-    "software development company Vijayawada",
-    "web development company Vijayawada",
-    "IT company Vijayawada",
-    "website development Vijayawada",
-    "custom software development Andhra Pradesh",
+    "SabariyaTech",
+    "software development company India",
+    "web development company Andhra Pradesh",
+    "custom software development",
     "web application development",
     "AI development company India",
     "ERP software development",
   ],
   openGraph: {
-    title: "Software Development Company in Vijayawada | SabariyaTech",
+    title: "SabariyaTech | Software Development Company",
     description:
-      "SabariyaTech builds websites, web applications, AI systems and business software for companies in Vijayawada and across India. Start your project today.",
+      "SabariyaTech builds websites, web applications, AI systems and business software for companies. 10+ live projects, 8+ happy clients. Start your project today.",
     url: "/",
   },
   twitter: {
-    title: "Software Development Company in Vijayawada | SabariyaTech",
+    title: "SabariyaTech | Software Development Company",
     description:
-      "SabariyaTech builds websites, web applications, AI systems and business software for companies in Vijayawada and across India. Start your project today.",
+      "SabariyaTech builds websites, web applications, AI systems and business software for companies across India. Start your project today.",
   },
 };
 

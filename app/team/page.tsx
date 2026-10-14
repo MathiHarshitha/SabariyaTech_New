@@ -6,27 +6,27 @@ import { CareersBand } from "@/components/pages/CareersBand";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Meet SabariyaTech Development Team in Vijayawada",
+  title: "Meet the SabariyaTech Development Team",
   description:
-    "Meet the SabariyaTech team — web developers, AI/ML engineers, data scientists, SEO specialists and video editors based in Vijayawada, Andhra Pradesh.",
+    "Meet the SabariyaTech team — web developers, AI/ML engineers, data scientists, SEO specialists and video editors.",
   alternates: { canonical: "/team" },
   keywords: [
     "SabariyaTech team",
-    "software developers Vijayawada",
-    "AI engineers Vijayawada",
-    "web development team Andhra Pradesh",
-    "tech team India",
+    "software developers India",
+    "AI engineers India",
+    "web development team India",
+    "tech team Andhra Pradesh",
   ],
   openGraph: {
-    title: "Meet Our Development Team in Vijayawada | SabariyaTech",
+    title: "Meet the SabariyaTech Development Team",
     description:
-      "Web developers, AI/ML engineers, data scientists, SEO specialists and video editors — the SabariyaTech team based in Vijayawada, Andhra Pradesh.",
+      "Web developers, AI/ML engineers, data scientists, SEO specialists and video editors — the SabariyaTech team.",
     url: "/team",
   },
   twitter: {
-    title: "Meet Our Development Team in Vijayawada | SabariyaTech",
+    title: "Meet the SabariyaTech Development Team",
     description:
-      "Web developers, AI/ML engineers, data scientists, SEO specialists and video editors — the SabariyaTech team based in Vijayawada, Andhra Pradesh.",
+      "Web developers, AI/ML engineers, data scientists, SEO specialists and video editors — the SabariyaTech team.",
   },
 };
 

@@ -10,29 +10,29 @@ import { Button } from "@/components/ui/Button";
 export const metadata: Metadata = {
   title: "SabariyaTech Web, AI & Software Development Services",
   description:
-    "Custom web platforms, AI automation, ERP, SaaS and backend infrastructure services from SabariyaTech in Vijayawada. End-to-end technology services built for real business growth.",
+    "Custom web platforms, AI automation, ERP, SaaS and backend infrastructure services from SabariyaTech. End-to-end technology services built for real business growth.",
   alternates: { canonical: "/services" },
   keywords: [
-    "software development services Vijayawada",
-    "web development services Vijayawada",
+    "software development services India",
+    "web development services",
     "AI development services",
     "custom web application development",
     "ERP software development",
     "SaaS development company",
-    "SEO services Vijayawada",
+    "SEO services India",
     "cloud infrastructure services",
     "backend development services",
   ],
   openGraph: {
     title: "Web, AI & Software Development Services | SabariyaTech",
     description:
-      "Custom web platforms, AI automation, ERP, SaaS and backend infrastructure services from SabariyaTech in Vijayawada. Built for real business growth.",
+      "Custom web platforms, AI automation, ERP, SaaS and backend infrastructure services from SabariyaTech. Built for real business growth.",
     url: "/services",
   },
   twitter: {
     title: "Web, AI & Software Development Services | SabariyaTech",
     description:
-      "Custom web platforms, AI automation, ERP, SaaS and backend infrastructure services from SabariyaTech in Vijayawada. Built for real business growth.",
+      "Custom web platforms, AI automation, ERP, SaaS and backend infrastructure services from SabariyaTech. Built for real business growth.",
   },
 };
 

@@ -10,23 +10,22 @@ const caveat = Caveat({ subsets: ["latin"], weight: ["600"], variable: "--font-c
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Software Development Company in Vijayawada`,
-    template: `%s · ${site.name}`,
+    default: `${site.name} — Software Development Company`,
+    template: `${site.name} | %s`,
   },
   description: site.description,
   applicationName: site.name,
   keywords: [
     "SabariyaTech",
-    "software development company Vijayawada",
-    "web development company Vijayawada",
-    "IT company Vijayawada",
-    "custom software development",
+    "custom software development India",
+    "web development company India",
+    "software development company Andhra Pradesh",
     "web application development",
     "AI development company",
     "ERP software development",
     "CRM development",
     "SaaS development",
-    "technology company Andhra Pradesh",
+    "technology company India",
     "LMS Portal",
     "restaurant billing software",
   ],
@@ -35,14 +34,14 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: site.name,
-    title: `${site.name} — Software Development Company in Vijayawada`,
+    title: `${site.name} — Software Development Company`,
     description: site.description,
-    images: [{ url: "/images/hero-mountains.jpg", width: 2000, height: 1333, alt: "SabariyaTech — Software Development Company in Vijayawada" }],
+    images: [{ url: "/images/hero-mountains.jpg", width: 2000, height: 1333, alt: "SabariyaTech — Software Development Company" }],
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Software Development Company in Vijayawada`,
+    title: `${site.name} — Software Development Company`,
     description: site.description,
     images: ["/images/hero-mountains.jpg"],
   },
@@ -73,6 +72,12 @@ const organizationLd = {
   logo: `${site.url}/Logo.svg`,
   image: `${site.url}/images/hero-mountains.jpg`,
   description: site.description,
+  legalName: "SabariyaTech",
+  sameAs: [
+    "https://www.linkedin.com/company/sabariyatech/",
+    "https://instagram.com/sabariyatech",
+    "https://github.com/SabariyaTech116",
+  ],
   areaServed: [
     { "@type": "City", name: "Vijayawada" },
     { "@type": "State", name: "Andhra Pradesh" },
@@ -96,6 +101,14 @@ const websiteLd = {
   name: site.name,
   url: site.url,
   description: site.description,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${site.url}/projects?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

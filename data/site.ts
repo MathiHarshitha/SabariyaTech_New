@@ -366,10 +366,9 @@ export const footerColumns = [
   },
 ];
 
-// TODO: add real profile URLs — links are hidden from the footer until set
 export const socials: { name: "LinkedIn" | "GitHub" | "Instagram" | "YouTube"; href: string }[] = [
-  { name: "LinkedIn", href: "" },
-  { name: "GitHub", href: "" },
-  { name: "Instagram", href: "" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/sabariyatech/" },
+  { name: "GitHub", href: "https://github.com/SabariyaTech116" },
+  { name: "Instagram", href: "https://instagram.com/sabariyatech" },
   { name: "YouTube", href: "" },
 ];

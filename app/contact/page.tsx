@@ -10,25 +10,24 @@ import { Eyebrow, H2, Lead } from "@/components/ui/Typography";
 import { accents, type Accent } from "@/lib/accents";
 
 export const metadata: Metadata = {
-  title: "Contact | Software Company Vijayawada",
-  description: `Talk to SabariyaTech about your project. Call ${site.phone}, email ${site.email} or fill our brief form. Based at Benz Circle, Vijayawada, Andhra Pradesh.`,
+  title: "Contact SabariyaTech | Get a Project Quote",
+  description: `Talk to SabariyaTech about your project. Call ${site.phone}, email ${site.email} or fill our brief form. Based in Andhra Pradesh, India.`,
   alternates: { canonical: "/contact" },
   keywords: [
     "contact SabariyaTech",
-    "software company Vijayawada contact",
-    "web development inquiry Vijayawada",
-    "get software quote Vijayawada",
-    "hire developers Vijayawada",
-    "IT company Benz Circle Vijayawada",
+    "hire software developers India",
+    "web development inquiry India",
+    "get software quote India",
+    "SabariyaTech contact",
   ],
   openGraph: {
-    title: "Contact SabariyaTech | Software Company Vijayawada",
-    description: `Talk to SabariyaTech about your project. Call ${site.phone}, email ${site.email} or fill our brief form. Based at Benz Circle, Vijayawada.`,
+    title: "Contact SabariyaTech | Get a Project Quote",
+    description: `Talk to SabariyaTech about your project. Call ${site.phone}, email ${site.email} or fill our brief form.`,
     url: "/contact",
   },
   twitter: {
-    title: "Contact SabariyaTech | Software Company Vijayawada",
-    description: `Talk to SabariyaTech about your project. Call ${site.phone}, email ${site.email} or fill our brief form. Based at Benz Circle, Vijayawada.`,
+    title: "Contact SabariyaTech | Get a Project Quote",
+    description: `Talk to SabariyaTech about your project. Call ${site.phone}, email ${site.email} or fill our brief form.`,
   },
 };
 

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "restaurant billing software",
     "SaaS products India",
     "SabariyaTech products",
-    "education software Vijayawada",
+    "education software India",
   ],
   openGraph: {
     title: "LMS Portal & Software Products | SabariyaTech",
