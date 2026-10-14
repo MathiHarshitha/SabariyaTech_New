@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "13 client websites and platforms built by SabariyaTech across tourism, education, legal, healthcare, hospitality, real estate and e-commerce. See our live work.",
   alternates: { canonical: "/projects" },
   keywords: [
-    "web development portfolio Vijayawada",
+    "web development portfolio India",
     "software projects portfolio",
     "client projects SabariyaTech",
     "website development case studies",

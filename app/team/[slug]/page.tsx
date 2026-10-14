@@ -27,18 +27,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!m) return {};
   return {
     title: `${m.name} | ${m.role}`,
-    description: `${m.name} is a ${m.role} at SabariyaTech in Vijayawada. ${m.short}`,
+    description: `${m.name} is a ${m.role} at SabariyaTech. ${m.short}`,
     alternates: { canonical: `/team/${m.slug}` },
-    keywords: [m.name, m.role, "SabariyaTech team", "Vijayawada", ...m.tags],
+    keywords: [m.name, m.role, "SabariyaTech team", ...m.tags],
     openGraph: {
       title: `${m.name} | ${m.role} at SabariyaTech`,
-      description: `${m.name} is a ${m.role} at SabariyaTech in Vijayawada. ${m.short}`,
+      description: `${m.name} is a ${m.role} at SabariyaTech. ${m.short}`,
       url: `/team/${m.slug}`,
       images: [{ url: m.image, alt: `Portrait of ${m.name}` }],
     },
     twitter: {
       title: `${m.name} | ${m.role} at SabariyaTech`,
-      description: `${m.name} is a ${m.role} at SabariyaTech in Vijayawada. ${m.short}`,
+      description: `${m.name} is a ${m.role} at SabariyaTech. ${m.short}`,
       images: [m.image],
     },
   };

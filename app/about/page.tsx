@@ -7,27 +7,27 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "About | Technology Company in Vijayawada",
+  title: "About SabariyaTech | Software Development Company",
   description:
-    "SabariyaTech is a Vijayawada-based software company building secure, scalable web platforms, AI systems and business software for long-term growth — inspired by the Sabari River.",
+    "SabariyaTech builds secure, scalable web platforms, AI systems and business software for long-term growth — inspired by the Sabari River.",
   alternates: { canonical: "/about" },
   keywords: [
     "about SabariyaTech",
-    "technology company Vijayawada",
+    "SabariyaTech software company",
     "software company Andhra Pradesh",
-    "IT company Vijayawada",
-    "web development team Vijayawada",
+    "technology company India",
+    "web development company India",
   ],
   openGraph: {
-    title: "About SabariyaTech | Technology Company in Vijayawada",
+    title: "About SabariyaTech | Software Development Company",
     description:
-      "SabariyaTech is a Vijayawada-based software company building secure, scalable web platforms, AI systems and business software for long-term growth.",
+      "SabariyaTech builds secure, scalable web platforms, AI systems and business software for long-term growth.",
     url: "/about",
   },
   twitter: {
-    title: "About SabariyaTech | Technology Company in Vijayawada",
+    title: "About SabariyaTech | Software Development Company",
     description:
-      "SabariyaTech is a Vijayawada-based software company building secure, scalable web platforms, AI systems and business software for long-term growth.",
+      "SabariyaTech builds secure, scalable web platforms, AI systems and business software for long-term growth.",
   },
 };
 
