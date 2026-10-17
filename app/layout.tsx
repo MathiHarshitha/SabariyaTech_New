@@ -58,6 +58,7 @@ const organizationLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "LocalBusiness"],
   name: site.name,
+  alternateName: ["Sabariya Tech", "Sabariyatech"],
   url: site.url,
   email: site.email,
   telephone: site.phone,
@@ -99,6 +100,7 @@ const websiteLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: site.name,
+  alternateName: ["Sabariya Tech", "Sabariyatech"],
   url: site.url,
   description: site.description,
   potentialAction: {
