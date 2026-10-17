@@ -119,7 +119,7 @@ export default function ContactPage() {
           <Reveal>
             <Eyebrow>What happens next</Eyebrow>
             <H2 id="visit-title">
-              From hello to <span className="text-brand-orange">kick-off.</span>
+              From hello to your <span className="text-brand-orange">SabariyaTech kick-off.</span>
             </H2>
             <Lead>No long forms or waiting games. Here&apos;s how it works after you reach out.</Lead>
             <ol className="mt-9 flex flex-col gap-5">

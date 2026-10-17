@@ -69,11 +69,11 @@ export function Culture() {
         <Reveal className="max-w-[640px]">
           <Eyebrow>Life at SabariyaTech</Eyebrow>
           <H2 id="culture-title">
-            A place to do your
+            Do your best work
             <br />
-            <span className="text-gradient-warm">best work.</span>
+            <span className="text-gradient-warm">at SabariyaTech.</span>
           </H2>
-          <Lead>We&apos;re a small, focused team. That means real responsibility from day one and room to grow with the company.</Lead>
+          <Lead>SabariyaTech is a small, focused team. That means real responsibility from day one and room to grow with us.</Lead>
         </Reveal>
         <ul className="mt-14 grid gap-5 md:grid-cols-3">
           {culture.map((c, i) => (
@@ -105,7 +105,7 @@ export function Openings() {
           <div>
             <Eyebrow light>Open positions</Eyebrow>
             <H2 id="openings-title" light>
-              Find your <span className="text-brand-orange">role.</span>
+              Find your role <span className="text-brand-orange">at SabariyaTech.</span>
             </H2>
           </div>
           <Lead light className="mt-0">

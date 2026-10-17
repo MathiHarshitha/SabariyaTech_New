@@ -94,12 +94,12 @@ export function Offerings() {
           <div>
             <Eyebrow>Everything we offer</Eyebrow>
             <H2 id="offerings-title">
-              One team for your whole
+              One SabariyaTech team for your
               <br />
-              <span className="text-brand-orange">digital journey.</span>
+              whole <span className="text-brand-orange">digital journey.</span>
             </H2>
           </div>
-          <Lead className="mt-0">From the first website to AI agents and cloud infrastructure, we cover every stage of building and growing online.</Lead>
+          <Lead className="mt-0">From the first website to AI agents and cloud infrastructure, SabariyaTech covers every stage of building and growing online.</Lead>
         </Reveal>
 
         <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

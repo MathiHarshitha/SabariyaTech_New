@@ -45,7 +45,7 @@ export function Story() {
         <Reveal className="lg:sticky lg:top-32">
           <Eyebrow>Our story</Eyebrow>
           <H2 id="story-title">
-            A name that
+            The SabariyaTech name
             <br />
             <span className="text-brand-blue">flows</span> with <span className="text-brand-orange">purpose.</span>
           </H2>
@@ -86,7 +86,7 @@ export function Values() {
           <div>
             <Eyebrow light>What we stand for</Eyebrow>
             <H2 id="values-title" light>
-              Like a river —
+              SabariyaTech — like a river,
               <br />
               <span className="text-gradient-flow">steady and strong.</span>
             </H2>

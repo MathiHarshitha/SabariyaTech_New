@@ -14,9 +14,9 @@ export function Testimonials() {
         <Reveal className="mb-14 max-w-[640px]">
           <Eyebrow>Testimonials</Eyebrow>
           <H2 id="testimonials-title">
-            Trusted by businesses
+            Businesses that trust
             <br />
-            and <span className="text-brand-blue">institutions.</span>
+            <span className="text-brand-blue">SabariyaTech.</span>
           </H2>
         </Reveal>
 

@@ -20,7 +20,7 @@ export function Team() {
         <Reveal>
           <Eyebrow>Our team</Eyebrow>
           <H2 id="team-title">
-            A passionate team
+            The SabariyaTech team,
             <br />
             building <span className="text-brand-orange">what&apos;s next.</span>
           </H2>

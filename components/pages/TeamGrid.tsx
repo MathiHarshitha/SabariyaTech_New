@@ -75,7 +75,7 @@ export function TeamGrid() {
           <div>
             <Eyebrow>Meet everyone</Eyebrow>
             <H2 id="full-team-title">
-              Our full <span className="text-brand-orange">team.</span>
+              The full <span className="text-brand-orange">SabariyaTech team.</span>
             </H2>
           </div>
           <Lead className="mt-0">Engineers, data scientists, marketers and storytellers — the people who design, build and grow every SabariyaTech project.</Lead>
@@ -101,9 +101,9 @@ export function TeamValues() {
         <Reveal>
           <Eyebrow light>What drives us</Eyebrow>
           <H2 id="values-title" light>
-            Ideas, people,
+            Ideas, people, technology —
             <br />
-            technology, <span className="text-gradient-flow">impact.</span>
+            <span className="text-gradient-flow">SabariyaTech impact.</span>
           </H2>
           <Lead light>Four words that shape how we hire, how we work together and how we build for our clients.</Lead>
         </Reveal>

@@ -42,7 +42,7 @@ export function Work() {
           </div>
           <div>
             <Lead className="mt-0">
-              We work with businesses, institutes and startups to build solutions that create measurable impact.
+              SabariyaTech works with businesses, institutes and startups to build solutions that create measurable impact.
             </Lead>
             <Button href="#contact" className="mt-7">
               Start a Similar Project

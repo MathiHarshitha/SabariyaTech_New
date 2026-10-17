@@ -18,8 +18,8 @@ export function WhyUs() {
             <span className="text-gradient-warm">A long-term partner.</span>
           </H2>
           <Lead>
-            We don&apos;t just build software. We help businesses grow with reliable, scalable and future-ready
-            solutions.
+            SabariyaTech doesn&apos;t just build software — we help businesses grow with reliable, scalable and
+            future-ready solutions.
           </Lead>
           {/* sculpted 3D objects echoing the logo's two spheres */}
           <div aria-hidden className="relative mt-12 hidden h-[200px] lg:block">

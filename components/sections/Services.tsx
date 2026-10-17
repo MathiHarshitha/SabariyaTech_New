@@ -16,12 +16,12 @@ export function Services() {
         <Reveal className="relative">
           <Eyebrow>What we do</Eyebrow>
           <H2 id="solutions-title" className="max-w-[560px]">
-            End-to-end <span className="text-brand-blue">technology</span> solutions for real-world{" "}
+            End-to-end <span className="text-brand-blue">SabariyaTech</span> solutions for real-world{" "}
             <span className="text-brand-orange">growth.</span>
           </H2>
           <Lead>
-            We build digital products, business systems and AI-powered solutions that solve real problems and create
-            long-term value.
+            SabariyaTech builds digital products, business systems and AI-powered solutions that solve real problems
+            and create long-term value.
           </Lead>
           <Button href="#work" className="mt-9">
             Explore Solutions
