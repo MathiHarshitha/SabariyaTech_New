@@ -17,6 +17,9 @@ ${site.name} is a software development company based in Vijayawada, Andhra Prade
 - Email: ${site.email}
 - Phone: ${site.phone}
 - Address: Vijayawada, Andhra Pradesh 520010, India
+- LinkedIn: https://www.linkedin.com/company/sabariyatech/
+- GitHub: https://github.com/SabariyaTech116
+- Instagram: https://instagram.com/sabariyatech
 
 ## Services
 

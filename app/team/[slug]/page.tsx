@@ -57,9 +57,9 @@ export default async function MemberPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://sabariyatech.in" },
-      { "@type": "ListItem", position: 2, name: "Team", item: "https://sabariyatech.in/team" },
-      { "@type": "ListItem", position: 3, name: m.name, item: `https://sabariyatech.in/team/${m.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.sabariyatech.in" },
+      { "@type": "ListItem", position: 2, name: "Team", item: "https://www.sabariyatech.in/team" },
+      { "@type": "ListItem", position: 3, name: m.name, item: `https://www.sabariyatech.in/team/${m.slug}` },
     ],
   };
 
@@ -68,9 +68,9 @@ export default async function MemberPage({ params }: Props) {
     "@type": "Person",
     name: m.name,
     jobTitle: m.role,
-    worksFor: { "@type": "Organization", name: "SabariyaTech", url: "https://sabariyatech.in" },
-    image: `https://sabariyatech.in${m.image}`,
-    url: `https://sabariyatech.in/team/${m.slug}`,
+    worksFor: { "@type": "Organization", name: "SabariyaTech", url: site.url },
+    image: `${site.url}${m.image}`,
+    url: `${site.url}/team/${m.slug}`,
     knowsAbout: m.skills,
     ...(m.linkedin ? { sameAs: [m.linkedin] } : {}),
   };

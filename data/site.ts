@@ -26,8 +26,7 @@ import type { Accent } from "@/lib/accents";
    --------------------------------------------------------- */
 export const site = {
   name: "SabariyaTech",
-  // TODO: confirm the production domain before launch
-  url: "https://sabariyatech.in",
+  url: "https://www.sabariyatech.in",
   email: "team@sabariyatech.in",
   phone: "+91 96525 57187",
   phoneHref: "tel:+919652557187",

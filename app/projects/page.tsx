@@ -38,8 +38,8 @@ const breadcrumbLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://sabariyatech.in" },
-    { "@type": "ListItem", position: 2, name: "Projects", item: "https://sabariyatech.in/projects" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.sabariyatech.in" },
+    { "@type": "ListItem", position: 2, name: "Projects", item: "https://www.sabariyatech.in/projects" },
   ],
 };
 
