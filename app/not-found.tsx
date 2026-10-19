@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 
+export const dynamic = "force-static";
+
 export default function NotFound() {
   return (
     <main id="main" className="grid min-h-svh place-items-center px-4 py-12 text-center">
