@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { PageHero, Swoosh } from "@/components/pages/PageHero";
-import { RiverCard, Story, TeamStrip, Values } from "@/components/pages/AboutContent";
-import { WhyUs } from "@/components/sections/WhyUs";
-import { FinalCTA } from "@/components/sections/FinalCTA";
+import { RiverCard, StandFor, WhyWeExist, FounderTeam, WhatsNext } from "@/components/pages/AboutContent";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
@@ -45,32 +43,30 @@ export default function AboutPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <PageShell>
-      <PageHero
-        crumbs={[{ label: "About" }]}
-        title={
-          <>
-            Flowing with <Swoosh>steady purpose.</Swoosh>
-          </>
-        }
-        lead="We build stable systems and scalable infrastructure for long-term growth — secure web platforms, production-ready AI and backend architecture you can rely on."
-        actions={
-          <>
-            <Button href="/team" size="lg">
-              Meet the team
-            </Button>
-            <Button href="/services" size="lg" variant="soft">
-              What we do
-            </Button>
-          </>
-        }
-        aside={<RiverCard />}
-      />
-      <Story />
-      <Values />
-      <WhyUs />
-      <TeamStrip />
-      <FinalCTA />
-    </PageShell>
+        <PageHero
+          crumbs={[{ label: "About" }]}
+          title={
+            <>
+              Flowing with <Swoosh>steady purpose.</Swoosh>
+            </>
+          }
+          lead="We build stable systems and scalable infrastructure for long-term growth — secure web platforms, production-ready AI and backend architecture you can rely on."
+          actions={
+            <>
+              <Button href="/team" size="lg">
+                Meet the team
+              </Button>
+              <Button href="/services" size="lg" variant="soft">
+                What we do
+              </Button>
+            </>
+          }
+          aside={<RiverCard />}
+        />
+        <StandFor />
+        <WhyWeExist />
+        <WhatsNext />
+      </PageShell>
     </>
   );
 }

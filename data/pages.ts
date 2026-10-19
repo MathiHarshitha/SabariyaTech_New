@@ -316,11 +316,11 @@ export const team: Member[] = [
   {
     slug: "posibabu-yalla",
     name: "Posibabu Yalla",
-    role: "Technical Head",
-    image: "/team/posibabu.png",
-    short: "Leading the technical vision and architecture behind every product we build.",
+    role: "Founder",
+    image: "/team/Posibabu_Yalla.jpeg",
+    short: "Founder of SabariyaTech — driving the technical vision and architecture behind every product we build.",
     about:
-      "Leading the technical vision and architecture behind every product SabariyaTech builds. Focused on scalable systems, clean code and long-term engineering excellence, he drives engineering strategy and leads the team in delivering production-ready solutions for clients across multiple industries.",
+      "Founder of SabariyaTech. Focused on scalable systems, clean code and long-term engineering excellence, he drives the technical vision and architecture behind every product SabariyaTech builds — leading the team in delivering production-ready solutions for clients across multiple industries.",
     tags: ["System Architecture", "Full Stack", "DevOps"],
     skills: ["System Architecture", "Next.js", "React", "Node.js", "TypeScript", "Cloud Infrastructure", "API Design", "DevOps", "Database Design", "Performance Optimization"],
     accent: "orange",
@@ -329,7 +329,7 @@ export const team: Member[] = [
   {
     slug: "harshitha-mathi",
     name: "Harshitha Mathi",
-    role: "Web Developer & Project Engineer",
+    role: "Full Stack Developer",
     image: "/team/harshitha.png",
     short: "Crafting high-performance web experiences with a focus on clean, scalable code.",
     about:
