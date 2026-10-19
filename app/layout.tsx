@@ -46,7 +46,10 @@ export const metadata: Metadata = {
     images: ["/images/hero-mountains.jpg"],
   },
   robots: { index: true, follow: true },
-  icons: { icon: "/favicon.svg" },
+  icons: [
+    { rel: "icon", url: "/favicon.ico", sizes: "any" },
+    { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
+  ],
 };
 
 export const viewport: Viewport = {
