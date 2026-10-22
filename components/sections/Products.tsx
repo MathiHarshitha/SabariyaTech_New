@@ -137,7 +137,7 @@ export function Products() {
               </div>
             </div>
 
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={active.id}
                 initial={{ opacity: 0, y: 10 }}

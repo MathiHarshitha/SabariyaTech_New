@@ -7,6 +7,14 @@ import { ChevronRight } from "lucide-react";
 import { cn, EASE } from "@/lib/utils";
 import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
+// CSS animation classes — render visibly in SSR HTML, no opacity:0 inline style
+const pageRise = [
+  "[animation:var(--animate-hero-rise-0)]",
+  "[animation:var(--animate-hero-rise-1)]",
+  "[animation:var(--animate-hero-rise-2)]",
+  "[animation:var(--animate-hero-rise-3)]",
+] as const;
+
 const rise = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
@@ -44,7 +52,7 @@ export function PageHero({
 
       <div className={cn("container-x grid items-center gap-12", aside && "lg:grid-cols-[1.05fr_0.95fr] lg:gap-16")}>
         <div className={cn(!aside && "max-w-[860px]")}>
-          <motion.nav {...rise(0.05)} aria-label="Breadcrumb">
+          <nav aria-label="Breadcrumb" className={pageRise[0]}>
             <ol className="inline-flex flex-wrap items-center gap-1.5 rounded-full border border-white bg-white/70 py-1.5 pl-1.5 pr-4 font-display text-[12px] font-semibold text-muted shadow-soft backdrop-blur">
               <li>
                 <Link href="/" className="rounded-full bg-navy-900 px-3 py-1 text-white transition-colors hover:bg-brand-orange">
@@ -66,35 +74,30 @@ export function PageHero({
                 </li>
               ))}
             </ol>
-          </motion.nav>
+          </nav>
 
-          <motion.h1
+          <h1
             id={id}
-            {...rise(0.15)}
-            className="mt-7 text-[clamp(40px,10vw,54px)] font-extrabold leading-[1.02] tracking-[-0.045em] md:text-[clamp(54px,5.6vw,84px)]"
+            className={cn("mt-7 text-[clamp(40px,10vw,54px)] font-extrabold leading-[1.02] tracking-[-0.045em] md:text-[clamp(54px,5.6vw,84px)]", pageRise[1])}
           >
             {title}
-          </motion.h1>
+          </h1>
           {lead && (
-            <motion.p {...rise(0.28)} className="mt-6 max-w-[600px] text-[17px] text-muted md:text-[19px]">
+            <p className={cn("mt-6 max-w-[600px] text-[17px] text-muted md:text-[19px]", pageRise[2])}>
               {lead}
-            </motion.p>
+            </p>
           )}
           {actions && (
-            <motion.div {...rise(0.38)} className="mt-9 flex flex-col gap-3.5 sm:flex-row sm:flex-wrap">
+            <div className={cn("mt-9 flex flex-col gap-3.5 sm:flex-row sm:flex-wrap", pageRise[3])}>
               {actions}
-            </motion.div>
+            </div>
           )}
         </div>
 
         {aside && (
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1.1, ease: EASE, delay: 0.35 }}
-          >
+          <div className="[animation:var(--animate-hero-rise-3)]">
             {aside}
-          </motion.div>
+          </div>
         )}
       </div>
 

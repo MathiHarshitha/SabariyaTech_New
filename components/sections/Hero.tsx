@@ -19,11 +19,15 @@ import { CountUp } from "@/components/ui/CountUp";
 import { cn, EASE } from "@/lib/utils";
 import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
+// rise() kept for purely decorative motion elements; critical text uses CSS animation instead
 const rise = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.9, ease: EASE, delay },
 });
+
+// CSS animation classes for critical text — rendered visibly by Google without JS
+const heroCssRise = ["[animation:var(--animate-hero-rise-0)]", "[animation:var(--animate-hero-rise-1)]", "[animation:var(--animate-hero-rise-2)]", "[animation:var(--animate-hero-rise-3)]"] as const;
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z]+/g, "-").replace(/-$/, "");
 
@@ -308,18 +312,16 @@ export function Hero() {
 
       {/* ---------- copy ---------- */}
       <div className="container-x relative text-center">
-        <motion.p
-          {...rise(0.05)}
-          className="mx-auto inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-white bg-white/70 px-3 py-1.5 font-display text-[10px] font-semibold uppercase tracking-[0.12em] text-navy-900 shadow-soft backdrop-blur sm:gap-2.5 sm:pl-1.5 sm:pr-4 sm:text-[11.5px] sm:tracking-[0.22em]"
+        <p
+          className={cn("mx-auto inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-white bg-white/70 px-3 py-1.5 font-display text-[10px] font-semibold uppercase tracking-[0.12em] text-navy-900 shadow-soft backdrop-blur sm:gap-2.5 sm:pl-1.5 sm:pr-4 sm:text-[11.5px] sm:tracking-[0.22em]", heroCssRise[0])}
         >
           <span className="rounded-full bg-navy-900 px-2.5 py-1 text-[10px] tracking-[0.16em] text-white">Studio</span>
           Ideas <span className="-ml-1.5 text-brand-orange">flow.</span> Solutions <span className="-ml-1.5 text-brand-blue">grow.</span>
-        </motion.p>
+        </p>
 
-        <motion.h1
+        <h1
           id="hero-title"
-          {...rise(0.15)}
-          className="mx-auto mt-[clamp(16px,3svh,28px)] max-w-[1100px] text-[clamp(38px,10.4vw,58px)] font-extrabold leading-[1.02] tracking-[-0.045em] md:text-[clamp(44px,min(6.4vw,11.5svh),96px)]"
+          className={cn("mx-auto mt-[clamp(16px,3svh,28px)] max-w-[1100px] text-[clamp(38px,10.4vw,58px)] font-extrabold leading-[1.02] tracking-[-0.045em] md:text-[clamp(44px,min(6.4vw,11.5svh),96px)]", heroCssRise[1])}
         >
           Turning ideas into <br className="hidden md:inline" />
           <span className="relative inline-block whitespace-nowrap">
@@ -345,13 +347,13 @@ export function Hero() {
             </svg>
           </span>{" "}
           <span className="text-gradient-ink">technology.</span>
-        </motion.h1>
+        </h1>
 
-        <motion.p {...rise(0.28)} className="mx-auto mt-[clamp(16px,3svh,28px)] max-w-[640px] text-[16px] text-muted sm:text-[17px] md:text-[18px]">
+        <p className={cn("mx-auto mt-[clamp(16px,3svh,28px)] max-w-[640px] text-[16px] text-muted sm:text-[17px] md:text-[18px]", heroCssRise[2])}>
           {site.description}
-        </motion.p>
+        </p>
 
-        <motion.div {...rise(0.38)} className="mt-[clamp(20px,4svh,36px)] flex justify-center">
+        <div className={cn("mt-[clamp(20px,4svh,36px)] flex justify-center", heroCssRise[3])}>
           <div className="relative flex w-full max-w-[320px] flex-col gap-3.5 sm:w-auto sm:max-w-none sm:flex-row">
             <Button href="#contact" size="lg" className="w-full sm:w-auto">
               Start a Project
@@ -388,7 +390,7 @@ export function Hero() {
               </span>
             </motion.p>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* ---------- build console ---------- */}

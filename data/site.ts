@@ -369,5 +369,5 @@ export const socials: { name: "LinkedIn" | "GitHub" | "Instagram" | "YouTube"; h
   { name: "LinkedIn", href: "https://www.linkedin.com/company/sabariyatech/" },
   { name: "GitHub", href: "https://github.com/SabariyaTech116" },
   { name: "Instagram", href: "https://instagram.com/sabariyatech" },
-  { name: "YouTube", href: "" },
+  { name: "YouTube", href: "https://youtube.com/@sabariyatech" },
 ];

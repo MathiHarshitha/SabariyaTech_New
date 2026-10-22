@@ -82,6 +82,7 @@ const organizationLd = {
     "https://www.linkedin.com/company/sabariyatech/",
     "https://instagram.com/sabariyatech",
     "https://github.com/SabariyaTech116",
+    "https://youtube.com/@sabariyatech",
   ],
   areaServed: [
     { "@type": "City", name: "Vijayawada" },
