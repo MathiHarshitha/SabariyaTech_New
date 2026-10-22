@@ -21,7 +21,7 @@ import { SectionBackdrop } from "@/components/ui/SectionBackdrop";
 
 // rise() kept for purely decorative motion elements; critical text uses CSS animation instead
 const rise = (delay: number) => ({
-  initial: { opacity: 0, y: 24 },
+  initial: { y: 24 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.9, ease: EASE, delay },
 });
@@ -40,7 +40,7 @@ const scene: Variants = {
   exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 const item: Variants = {
-  hidden: { opacity: 0, y: 14 },
+  hidden: { y: 14 },
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
@@ -375,7 +375,7 @@ export function Hero() {
             {/* handwritten note, pinned beside the buttons */}
             <motion.p
               aria-hidden
-              initial={{ opacity: 0, x: 12, rotate: -4 }}
+              initial={{ x: 12, rotate: -4 }}
               animate={{ opacity: 1, x: 0, rotate: -4 }}
               transition={{ duration: 0.9, ease: EASE, delay: 1 }}
               className="absolute left-[calc(100%+12px)] top-1/2 hidden -translate-y-1/2 items-center gap-1.5 whitespace-nowrap text-left font-handwritten text-[30px] leading-[1.05] text-navy-900/70 lg:flex"
@@ -396,7 +396,7 @@ export function Hero() {
       {/* ---------- build console ---------- */}
       <div className="container-x mt-10 sm:mt-14 lg:mt-16">
         <motion.div
-          initial={{ opacity: 0, y: 48, scale: 0.98 }}
+          initial={{ y: 48, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.1, ease: EASE, delay: 0.45 }}
           onPointerMove={onPointerMove}

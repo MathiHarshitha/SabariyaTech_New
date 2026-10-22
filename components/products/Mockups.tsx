@@ -171,7 +171,7 @@ export function AIEditorMockup() {
           </div>
           <span className="mt-2 inline-block h-3 w-[1.5px] animate-blink bg-brand-blue" />
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5, ease: EASE }}
             className="absolute bottom-5 left-5 right-5 hidden items-center gap-2 rounded-xl border border-brand-blue/15 bg-white p-2.5 text-[10.5px] shadow-[0_12px_30px_-12px_rgb(8_120_232/0.4)] sm:flex"

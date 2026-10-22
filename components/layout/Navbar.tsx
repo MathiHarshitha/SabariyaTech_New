@@ -102,7 +102,7 @@ export function Navbar() {
         {open && (
           <motion.div
             className="fixed inset-0 z-[60] bg-navy-900/40 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
+            initial={{}}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
@@ -115,7 +115,7 @@ export function Navbar() {
               role="dialog"
               aria-modal="true"
               aria-label="Site menu"
-              initial={{ x: 40, opacity: 0 }}
+              initial={{ x: 40 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 40, opacity: 0 }}
               transition={{ duration: 0.45, ease: EASE }}
@@ -138,7 +138,7 @@ export function Navbar() {
                   {navLinks.map((l, i) => (
                     <motion.li
                       key={l.href}
-                      initial={{ opacity: 0, x: 16 }}
+                      initial={{ x: 16 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.08 + i * 0.04, duration: 0.4, ease: EASE }}
                     >

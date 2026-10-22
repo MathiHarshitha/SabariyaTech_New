@@ -102,7 +102,7 @@ export function TechStack() {
             {techStack.map((t, i) => (
               <motion.li
                 key={t.name}
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ scale: 0.8 }}
                 whileInView={{ opacity: dim(t.group) ? 0.35 : 1, scale: focus === t.group ? 1.06 : 1 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.5, ease: EASE, delay: focus ? 0 : i * 0.04 }}

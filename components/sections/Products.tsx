@@ -124,7 +124,7 @@ export function Products() {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={active.id}
-                    initial={{ opacity: 0, y: 18, scale: 0.985 }}
+                    initial={{ y: 18, scale: 0.985 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -12, scale: 0.985 }}
                     transition={{ duration: 0.45, ease: EASE }}
@@ -140,7 +140,7 @@ export function Products() {
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={active.id}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35, ease: EASE }}
