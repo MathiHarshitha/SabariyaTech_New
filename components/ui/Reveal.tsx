@@ -6,12 +6,12 @@ import type { HTMLAttributes } from "react";
 type Props = HTMLAttributes<HTMLDivElement> & { delay?: number; y?: number };
 
 /**
- * Fades content upward when it scrolls into view.
+ * Fades + slides content up when it scrolls into view.
  *
- * SSR renders the element fully visible (no opacity:0 inline style) so
- * Google's renderer indexes the content. After hydration, JavaScript hides
- * the element and re-reveals it via IntersectionObserver — progressive
- * enhancement: content is always accessible, animation is a bonus.
+ * SSR renders fully visible (no opacity:0 inline style) — Google indexes content.
+ * After hydration, JS hides the element with opacity only (NOT transform), so
+ * IntersectionObserver can detect the element's real layout position correctly.
+ * Once in view, the slide-up transform is applied and animated in.
  */
 export function Reveal({ delay = 0, y = 28, children, style, ...rest }: Props) {
   const ref = useRef<HTMLDivElement>(null);
@@ -20,19 +20,30 @@ export function Reveal({ delay = 0, y = 28, children, style, ...rest }: Props) {
     const el = ref.current;
     if (!el) return;
 
-    // Apply initial hidden state only after JS hydrates (not in SSR HTML)
+    // Hide with opacity only — no transform here, because transform shifts the
+    // element visually and causes IntersectionObserver to think it's off-screen.
     el.style.opacity = "0";
-    el.style.transform = `translateY(${y}px)`;
+    el.style.pointerEvents = "none";
 
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
-        el.style.transition = `opacity 0.9s cubic-bezier(0.22,0.8,0.24,1) ${delay}s, transform 0.9s cubic-bezier(0.22,0.8,0.24,1) ${delay}s`;
-        el.style.opacity = "1";
-        el.style.transform = "none";
         obs.disconnect();
+
+        // Set the start transform now that we know element is in view
+        el.style.transform = `translateY(${y}px)`;
+
+        // Double rAF ensures browser paints the initial state before transition starts
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            el.style.transition = `opacity 0.9s cubic-bezier(0.22,0.8,0.24,1) ${delay}s, transform 0.9s cubic-bezier(0.22,0.8,0.24,1) ${delay}s`;
+            el.style.opacity = "1";
+            el.style.transform = "none";
+            el.style.pointerEvents = "";
+          });
+        });
       },
-      { rootMargin: "0px 0px -60px 0px" },
+      { threshold: 0.01 },
     );
 
     obs.observe(el);
