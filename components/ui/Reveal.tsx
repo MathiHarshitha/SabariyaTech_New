@@ -25,14 +25,18 @@ export function Reveal({ delay = 0, y = 28, children, style, ...rest }: Props) {
     el.style.opacity = "0";
     el.style.pointerEvents = "none";
 
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        obs.disconnect();
+    let triggered = false;
+    let timer: ReturnType<typeof setTimeout> | undefined = undefined;
 
+    const doReveal = (animate: boolean) => {
+      if (triggered) return;
+      triggered = true;
+      obs.disconnect();
+      clearTimeout(timer);
+
+      if (animate) {
         // Set the start transform now that we know element is in view
         el.style.transform = `translateY(${y}px)`;
-
         // Double rAF ensures browser paints the initial state before transition starts
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
@@ -42,12 +46,30 @@ export function Reveal({ delay = 0, y = 28, children, style, ...rest }: Props) {
             el.style.pointerEvents = "";
           });
         });
+      } else {
+        // Instant reveal — used by the timeout fallback for crawlers
+        el.style.opacity = "1";
+        el.style.transform = "none";
+        el.style.pointerEvents = "";
+      }
+    };
+
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        doReveal(true);
       },
       { threshold: 0.01 },
     );
 
     obs.observe(el);
-    return () => obs.disconnect();
+
+    // Safety net for headless renderers (e.g. Google WRS) that don't scroll:
+    // IntersectionObserver never fires for below-fold elements, so after 2.5 s
+    // we reveal everything instantly. Google allows 5+ s of rendering time.
+    timer = setTimeout(() => doReveal(false), 2500);
+
+    return () => { obs.disconnect(); clearTimeout(timer); };
   }, [delay, y]);
 
   return (
